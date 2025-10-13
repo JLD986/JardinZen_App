@@ -1,14 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.jardnzen_app"
+    namespace = "com.locochones.jardnzen_app"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.jardnzen_app"
+        applicationId = "com.locochones.jardnzen_app"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -18,12 +19,13 @@ android {
     }
 
     buildTypes {
+        val proguardFilesList = listOf(
+            getDefaultProguardFile("proguard-android-optimize.txt"),
+            "proguard-rules.pro"
+        )
         release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            isMinifyEnabled = true
+            proguardFiles(*proguardFilesList.toTypedArray())
         }
     }
     compileOptions {
@@ -36,13 +38,19 @@ android {
 }
 
 dependencies {
-
+    // Dependencias de implementación
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(platform("com.google.firebase:firebase-bom:34.3.0"))
+    implementation("com.google.firebase:firebase-analytics")
+
+    // Dependencias de pruebas unitarias
     testImplementation(libs.junit)
+
+    // Dependencias de pruebas instrumentadas
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
