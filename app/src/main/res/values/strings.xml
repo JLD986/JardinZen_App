@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">JardínZen_App</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nv_Titulo">Jardín Zen</string>
+    <string name="item_Inicio">Inicio</string>
+    <string name="item_Estadisticas">Estadisticas</string>
+    <string name="item_Perfil">Perfil</string>"
+    <string name="item_Notificaciones">Notificaciones</string>
+    <string name="item_Configuracion">Configuracion</string>
 </resources>
