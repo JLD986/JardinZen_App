@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_Inicio"
+        android:title="Inicio"
+        android:icon="@drawable/ic_inicio"
+        />
+
+    <item
+        android:id="@+id/item_Estadisticas"
+        android:title="Estadsiticas"
+        android:icon="@drawable/ic_estadistica"
+        />
+
+    <item
+        android:id="@+id/item_Perfil"
+        android:title="Perfil"
+        android:icon="@drawable/ic_perfil"
+        />
+
+    <item
+        android:id="@+id/item_Notificaciones"
+        android:title="Notificaciones"
+        android:icon="@drawable/ic_notificaciones"
+        />
+
+    <item
+        android:id="@+id/item_Configuracion"
+        android:title="Configuracion"
+        android:icon="@drawable/ic_configuraciones"
+        />
+</menu>
