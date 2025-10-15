@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,6 +9,147 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="@color/verde_fondo"
     tools:context="com.example.jardnzen_app.InicioSesionActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Logo -->
+    <ImageView
+        android:src="@drawable/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <!-- Ingresar -->
+    <TextView
+        android:text="@string/ingresar"
+        android:fontFamily="@font/comfortaa"
+        android:textStyle="bold"
+        android:textColor="@color/verde_fuente"
+        android:textSize="60sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!--nombre de usuario-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:layout_height="55dp">
+
+        <EditText
+            android:id="@+id/usuario"
+            android:hint="@string/usuario"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--contraseña-->
+    <com.google.android.material.textfield.TextInputLayout
+        app:passwordToggleEnabled="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="55dp">
+
+        <EditText
+            android:id="@+id/contrasena"
+            android:hint="@string/contrasena"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- boton ingresar -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/boton"
+        android:text="@string/ingresar"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        app:cornerRadius="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/verde_oscuro"
+        android:fontFamily="@font/comfortaa"
+        android:backgroundTint="@color/verde_boton"
+        app:strokeColor="@color/verde_fuente2"
+        app:strokeWidth="2dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"/>
+
+    <!-- boton olvidar contraseña -->
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/olvidaste_contrasena"
+        android:text="@string/olvidaste_contrasena"
+        android:textColor="@color/azul_fuente"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/comfortaa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- boton ingresar con -->
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/ingresa_con"
+        android:text="@string/ingresa_con"
+        android:textColor="@color/verde_fuente2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/comfortaa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- boton facebook y google-->
+    <LinearLayout
+        android:id="@+id/layout_facebook_google"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:id="@+id/facebook"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/facebook"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+        <ImageView
+            android:id="@+id/google"
+            android:src="@drawable/google"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </LinearLayout>
+
+    <!-- no tienes cuenta -->
+    <TextView
+        android:layout_marginTop="15dp"
+        android:id="@+id/no_tienes_cuenta"
+        android:text="@string/no_tienes_cuenta"
+        android:textColor="@color/verde_fuente2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/comfortaa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- boton registrar -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonRegistrar"
+        android:text="@string/registrar"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        app:cornerRadius="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/verde_oscuro"
+        android:fontFamily="@font/comfortaa"
+        android:backgroundTint="@color/verde_boton"
+        app:strokeColor="@color/verde_fuente2"
+        app:strokeWidth="2dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
