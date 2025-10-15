@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JardínZen_App">
         <activity
+            android:name="com.example.jardnzen_app.RegistroActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.jardnzen_app.InicioSesionActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
