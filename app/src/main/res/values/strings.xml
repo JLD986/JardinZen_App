@@ -1,9 +1,98 @@
 <resources>
-    <string name="app_name">JardínZen_App</string>
-    <string name="nv_Titulo">Jardín Zen</string>
-    <string name="item_Inicio">Inicio</string>
-    <string name="item_Estadisticas">Estadisticas</string>
-    <string name="item_Perfil">Perfil</string>"
-    <string name="item_Notificaciones">Notificaciones</string>
-    <string name="item_Configuracion">Configuracion</string>
+    <!-- Strings generales de la aplicación -->
+    <string name="app_name">Jardín Zen</string>
+    <string name="hola_usuario">Hola, %1$s</string>
+    <string name="mi_jardin">Mi Jardín</string>
+    <string name="ver_mas">Ver más</string>
+    <string name="volver">Volver</string>
+    <string name="guardar_cambios">Guardar cambios</string>
+
+    <!-- Strings de Login -->
+    <string name="ingresar">Ingresar</string>
+    <string name="registrar">Registrar</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="olvidaste_contrasena">¿Olvidaste tu contraseña?</string>
+    <string name="ingresa_con">O ingresa con</string>
+    <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
+    <string name="escribe_nombre_usuario">Escribe tu nombre de usuario</string>
+    <string name="correo_electronico">Correo Electrónico</string>
+    <string name="escribe_correo">Escribe tu correo electrónico</string>
+
+    <!-- Strings de Configuración -->
+    <string name="configuracion">Configuración</string>
+    <string name="activar_riego_manual">Activar riego manual</string>
+    <string name="desactivar_riego_manual">Desactivar riego manual</string>
+    <string name="programar_riego">Programar riego</string>
+    <string name="ajustar_nivel_minimo_humedad">Ajustar nivel mínimo de humedad</string>
+    <string name="configuracion_alertas">Configuración de alertas</string>
+
+    <!-- Strings de Perfil -->
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="plantas_registradas">Plantas registradas: %1$d</string>
+    <string name="dispositivo_iot_vinculado">Dispositivo IoT vinculado: %1$s</string>
+    <string name="notificaciones_activadas">Notificaciones: %1$s</string>
+    <string name="modo_riego">Modo de riego: %1$s</string>
+    <string name="editor_perfil">Editor perfil</string>
+    <string name="cambiar_contrasena">Cambiar contraseña</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+
+    <!-- Strings de Plantas (Etiquetas solamente) -->
+    <string name="estado">Estado: %1$s</string>
+    <string name="temperatura">Temperatura</string>
+    <string name="humedad_suelo">Humedad del suelo</string>
+    <string name="nivel_luz">Nivel de luz</string>
+    <string name="nivel_agua">Nivel de agua</string>
+    <string name="descripcion_planta">%1$s</string>
+    <string name="consejos_planta">%1$s</string>
+    <string name="riego_automatico_activado">Riego automático activado</string>
+    <string name="riego_automatico_desactivado">Riego automático desactivado</string>
+    <string name="regar">Regar</string>
+    <string name="ultimo_riego_automatico">Último riego automático: %1$s</string>
+
+    <!-- Strings de Estadísticas -->
+    <string name="estadisticas">Estadísticas</string>
+    <string name="humedad_temperatura">Humedad y Temperatura</string>
+    <string name="fecha">Fecha</string>
+    <string name="humedad">Humedad</string>
+    <string name="temperatura_c">Temperatura</string>
+
+    <!-- Strings de Notificaciones -->
+    <string name="notificaciones">Notificaciones</string>
+    <string name="todos">Todos</string>
+    <string name="agua">Agua</string>
+    <string name="luz">Luz</string>
+    <string name="temperatura_notif">Temperatura</string>
+    <string name="humedad_notif">Humedad</string>
+    <string name="mantenimiento">Mantenimiento</string>
+    <string name="nivel_agua_bajo">Nivel de agua bajo</string>
+    <string name="marcar_todos_leido">Marcar todos como leído</string>
+
+    <!-- Strings de Ajuste de Humedad -->
+    <string name="nivel_minimo_humedad">Nivel mínimo de humedad</string>
+    <string name="define_porcentaje_humedad">Define el porcentaje mínimo de humedad del suelo de cada planta. Si el valor baja de este umbral, el sistema activará el riego automático.</string>
+    <string name="ajuste_nivel_humedad_adecuado">Ajuste el nivel de humedad adecuado</string>
+    <string name="estado_actual_suelo">Estado actual del suelo: %1$d %% (%2$s)</string>
+    <string name="estado_optimo">óptimo</string>
+    <string name="estado_bajo">bajo</string>
+    <string name="estado_alto">alto</string>
+    <string name="riego_activado_si_baja">Riego automático: activado si baja de %1$d %%.</string>
+
+    <!-- Strings de Configuración de Alertas -->
+    <string name="configuracion_alertas_titulo">Configuración de alertas</string>
+    <string name="nivel_agua_bajo_desc">Notificar cuando el depósito de agua esté por debajo del %1$d %%.</string>
+    <string name="humedad_suelo_baja_desc">Avisar cuando la humedad del suelo esté por debajo del nivel mínimo configurado.</string>
+    <string name="exceso_luz_solar_desc">Enviar alerta si la exposición supera las %1$d h continuas.</string>
+    <string name="temperatura_extrema_desc">Notificar si la temperatura ambiental es mayor a %1$d °C o menor a %2$d °C.</string>
+    <string name="mantenimiento_sensor_desc">Recordar revisión %1$s del sistema de sensores.</string>
+
+    <!-- Estados y valores predeterminados -->
+    <string name="activo">Activo</string>
+    <string name="inactivo">Inactivo</string>
+    <string name="activados">Activados</string>
+    <string name="desactivados">Desactivados</string>
+    <string name="automatico">Automático</string>
+    <string name="manual">Manual</string>
+    <string name="saludable">Saludable</string>
+    <string name="necesita_atencion">Necesita atención</string>
 </resources>

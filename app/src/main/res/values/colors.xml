@@ -7,4 +7,16 @@
     <color name="verde_claro">#ffe2ffdb</color>
     <color name="cafe_oscuro">#ff756b0d</color>
     <color name="verde_oscuro">#ff008000</color>
+    <color name="verde_fondo">#fff0f7e8</color>
+    <color name="verde_fuente">#ff146914</color>
+    <color name="verde_target">#fff1ffd6</color>
+    <color name="verde_fuente2">#ff28a645</color>
+    <color name="verde_oscuro_fuente">#ff175417</color>
+    <color name="blanco_target">#fffcfff5</color>
+    <color name="verde_cuadro">#ffebf7e8</color>
+    <color name="gris_fuente">#ff424242</color>
+    <color name="azul">#ff004b9c</color>
+    <color name="verde_despliegue">#ffe8ffd4</color>
+    <color name="azul_fuente">#ff145bde</color>
+    <color name="verde_boton">#ffe7ffe3</color>
 </resources>
