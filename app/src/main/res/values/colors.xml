@@ -19,4 +19,5 @@
     <color name="verde_despliegue">#ffe8ffd4</color>
     <color name="azul_fuente">#ff145bde</color>
     <color name="verde_boton">#ffe7ffe3</color>
+    <color name="blanco">#ffffffff</color>
 </resources>

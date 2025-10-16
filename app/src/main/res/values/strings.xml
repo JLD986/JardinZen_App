@@ -42,10 +42,11 @@
 
     <!-- Strings de Plantas (Etiquetas solamente) -->
     <string name="estado">Estado: %1$s</string>
-    <string name="temperatura">Temperatura</string>
-    <string name="humedad_suelo">Humedad del suelo</string>
-    <string name="nivel_luz">Nivel de luz</string>
-    <string name="nivel_agua">Nivel de agua</string>
+    <string name="nombre_planta">Nombre</string>
+    <string name="temperatura">🌡️ Temperatura</string>
+    <string name="humedad_suelo">🌿 Humedad del suelo</string>
+    <string name="nivel_luz">☀️ Nivel de luz</string>
+    <string name="nivel_agua">💧 Nivel de agua</string>
     <string name="descripcion_planta">%1$s</string>
     <string name="consejos_planta">%1$s</string>
     <string name="riego_automatico_activado">Riego automático activado</string>
