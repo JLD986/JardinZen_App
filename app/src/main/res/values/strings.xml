@@ -18,6 +18,9 @@
     <string name="escribe_nombre_usuario">Escribe tu nombre de usuario</string>
     <string name="correo_electronico">Correo Electrónico</string>
     <string name="escribe_correo">Escribe tu correo electrónico</string>
+    <string name="escribe_contrasena">Escribe tu contraseña</string>
+    <string name="o">O</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
 
     <!-- Strings de Configuración -->
     <string name="configuracion">Configuración</string>
