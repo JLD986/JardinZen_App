@@ -1,10 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/verde_fondo"
     tools:context="com.example.jardnzen_app.RegistroActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--logo-->
+    <ImageView
+        android:src="@drawable/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <!--Registrar-->
+    <TextView
+        android:text="@string/registrar"
+        android:fontFamily="@font/comfortaa"
+        android:textStyle="bold"
+        android:textColor="@color/verde_fuente"
+        android:textSize="60sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!--Nombre de usuario-->
+    <TextView
+        android:text="@string/usuario"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="110dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/cafe_oscuro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="310dp"
+        android:layout_height="55dp">
+
+        <EditText
+            android:id="@+id/nombre_usuario"
+            android:hint="@string/escribe_nombre_usuario"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--correo-->
+    <TextView
+        android:text="@string/correo_electronico"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="55dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/cafe_oscuro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="310dp"
+        android:layout_height="55dp">
+
+        <EditText
+            android:id="@+id/correo_electronico"
+            android:hint="@string/escribe_correo"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--contraseña-->
+    <TextView
+        android:text="@string/contrasena"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="91dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/cafe_oscuro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:passwordToggleEnabled="true"
+        android:layout_width="310dp"
+        android:layout_height="55dp">
+
+        <EditText
+            android:id="@+id/contrasena"
+            android:hint="@string/escribe_contrasena"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--boton de registro-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonRegistrar"
+        android:text="@string/registrar"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        app:cornerRadius="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/verde_oscuro"
+        android:fontFamily="@font/comfortaa"
+        android:backgroundTint="@color/verde_boton"
+        app:strokeColor="@color/verde_fuente2"
+        app:strokeWidth="2dp"
+        android:layout_width="200dp"
+        android:layout_height="55dp"/>
+
+    <!--la o xd-->
+    <TextView
+        android:id="@+id/o"
+        android:text="@string/o"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/comfortaa"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/cafe_oscuro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!--enlace para iniciar sesion-->
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/iniciosesion"
+        android:text="@string/iniciar_sesion"
+        android:fontFamily="@font/comfortaa"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/azul_fuente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
