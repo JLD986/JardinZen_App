@@ -74,25 +74,25 @@
         android:layout_width="200dp"
         android:layout_height="60dp"/>
 
-    <!-- boton olvidar contraseña -->
+    <!-- enlace olvidar contraseña -->
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/olvidaste_contrasena"
         android:text="@string/olvidaste_contrasena"
         android:textColor="@color/azul_fuente"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:fontFamily="@font/comfortaa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <!-- boton ingresar con -->
+    <!-- ingresar con -->
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/ingresa_con"
         android:text="@string/ingresa_con"
         android:textColor="@color/verde_fuente2"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:fontFamily="@font/comfortaa"
         android:layout_width="wrap_content"
@@ -130,7 +130,7 @@
         android:id="@+id/no_tienes_cuenta"
         android:text="@string/no_tienes_cuenta"
         android:textColor="@color/verde_fuente2"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:fontFamily="@font/comfortaa"
         android:layout_width="wrap_content"
