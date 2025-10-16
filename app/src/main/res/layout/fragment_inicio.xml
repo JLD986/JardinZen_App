@@ -1,13 +1,47 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentInicio">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="5dp">
 
+        <TextView
+            android:id="@+id/hola_usuario"
+            android:text="@string/hola_usuario"
+            android:fontFamily="@font/comfortaa"
+            android:textStyle="bold"
+            android:textColor="@color/verde_fuente"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="40sp"
+            android:layout_width="250dp"
+            android:layout_height="60dp"/>
+
+        <TextView
+            android:id="@+id/mi_jardin"
+            android:text="@string/mi_jardin"
+            android:fontFamily="@font/comfortaa"
+            android:textStyle="bold"
+            android:textSize="27sp"
+            android:textColor="@color/verde_fuente2"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="35dp"
+            android:layout_width="160dp"
+            android:layout_height="50dp"/>
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_jardin"
+            android:layout_marginTop="20dp"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 </FrameLayout>

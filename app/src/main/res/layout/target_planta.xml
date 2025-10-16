@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    android:backgroundTint="@color/verde_target">
+
+    <!--tarjeta-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--imagen y nombre-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <!--imagen de la planta-->
+            <ImageView
+                android:id="@+id/imagen_planta"
+                android:src=""
+                android:layout_marginBottom="4dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/nombre_planta"/>
+
+            <!--nombre de la planta-->
+            <TextView
+                android:id="@+id/nombre_planta"
+                android:text="@string/nombre_planta"
+                android:textColor="@color/verde_oscuro_fuente"
+                android:textSize="16sp"
+                android:fontFamily="@font/comfortaa"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!--Datos de la planta-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginStart="1dp"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            
+            <TableLayout
+                android:shrinkColumns="1"
+                android:stretchColumns="1"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+                    <!--temperatura-->
+                    <TextView
+                        android:id="@+id/Temperatura"
+                        android:text="@string/temperatura"
+                        android:textColor="@color/verde_oscuro"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/comfortaa"
+                        android:textStyle="bold"
+                        android:padding="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <!--humedad-->
+                    <TextView
+                        android:id="@+id/Humedad"
+                        android:text="@string/humedad_suelo"
+                        android:textColor="@color/verde_oscuro"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/comfortaa"
+                        android:textStyle="bold"
+                        android:padding="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </TableRow>
+
+                <TableRow>
+                    <!--nivel de sol-->
+                    <TextView
+                        android:id="@+id/Luz"
+                        android:text="@string/nivel_luz"
+                        android:textColor="@color/verde_oscuro"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/comfortaa"
+                        android:textStyle="bold"
+                        android:padding="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <!--nivel de agua-->
+                    <TextView
+                        android:id="@+id/agua"
+                        android:text="@string/nivel_agua"
+                        android:textColor="@color/verde_oscuro"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/comfortaa"
+                        android:textStyle="bold"
+                        android:padding="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </TableRow>
+
+            </TableLayout>
+
+            <!--boton de ver mas-->
+            <Button
+                android:id="@+id/ver_mas"
+                android:text="@string/ver_mas"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@color/verde_oscuro"
+                android:textColor="@color/blanco"
+                android:textSize="18dp"
+                android:fontFamily="@font/comfortaa"
+                android:textStyle="bold"
+                android:layout_marginLeft="65dp"
+                android:layout_width="130dp"
+                android:layout_height="48dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
