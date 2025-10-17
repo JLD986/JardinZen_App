@@ -53,7 +53,7 @@
     <string name="riego_automatico_activado">Riego automático activado</string>
     <string name="riego_automatico_desactivado">Riego automático desactivado</string>
     <string name="regar">Regar</string>
-    <string name="ultimo_riego_automatico">Último riego automático: %1$s</string>
+    <string name="ultimo_riego">Último riego: %1$s</string>
 
     <!-- Strings de Estadísticas -->
     <string name="estadisticas">Estadísticas</string>
