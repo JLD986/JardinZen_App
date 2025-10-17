@@ -60,7 +60,7 @@
 
     <!-- boton ingresar -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/boton"
+        android:id="@+id/btnIngresar"
         android:text="@string/ingresar"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
@@ -77,7 +77,7 @@
     <!-- enlace olvidar contraseña -->
     <TextView
         android:layout_marginTop="10dp"
-        android:id="@+id/olvidaste_contrasena"
+        android:id="@+id/btn_olvidaste_contrasena"
         android:text="@string/olvidaste_contrasena"
         android:textColor="@color/azul_fuente"
         android:textSize="15sp"
@@ -109,7 +109,7 @@
         android:layout_height="wrap_content">
         
         <ImageView
-            android:id="@+id/facebook"
+            android:id="@+id/btn_facebook"
             android:layout_marginEnd="15dp"
             android:src="@drawable/facebook"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -117,7 +117,7 @@
             android:layout_height="40dp"/>
 
         <ImageView
-            android:id="@+id/google"
+            android:id="@+id/btn_google"
             android:src="@drawable/google"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_width="50dp"
@@ -138,7 +138,7 @@
 
     <!-- boton registrar -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/botonRegistrar"
+        android:id="@+id/btnRegistrar"
         android:text="@string/registrar"
         android:layout_marginTop="5dp"
         android:textSize="20sp"
