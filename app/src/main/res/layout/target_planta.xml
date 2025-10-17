@@ -34,7 +34,7 @@
                 <!--imagen de la planta-->
                 <ImageView
                     android:id="@+id/imagen_planta"
-                    android:src=""
+                    android:src="@drawable/planta"
                     android:layout_marginBottom="4dp"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
