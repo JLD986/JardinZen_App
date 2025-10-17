@@ -29,6 +29,7 @@
     <string name="programar_riego">Programar riego</string>
     <string name="ajustar_nivel_minimo_humedad">Ajustar nivel mínimo de humedad</string>
     <string name="configuracion_alertas">Configuración de alertas</string>
+    <string name="hello_blank_fragment">Hola desde el fragmento</string>
 
     <!-- Strings de Perfil -->
     <string name="mi_perfil">Mi Perfil</string>
