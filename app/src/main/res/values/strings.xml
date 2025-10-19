@@ -38,7 +38,7 @@
     <string name="dispositivo_iot_vinculado">Dispositivo IoT vinculado: %1$s</string>
     <string name="notificaciones_activadas">Notificaciones: %1$s</string>
     <string name="modo_riego">Modo de riego: %1$s</string>
-    <string name="editor_perfil">Editor perfil</string>
+    <string name="editor_perfil">Editar perfil</string>
     <string name="cambiar_contrasena">Cambiar contraseña</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
 
@@ -54,7 +54,7 @@
     <string name="riego_automatico_activado">Riego automático activado</string>
     <string name="riego_automatico_desactivado">Riego automático desactivado</string>
     <string name="regar">Regar</string>
-    <string name="ultimo_riego_automatico">Último riego automático: %1$s</string>
+    <string name="ultimo_riego">Último riego: %1$s</string>
 
     <!-- Strings de Estadísticas -->
     <string name="estadisticas">Estadísticas</string>
