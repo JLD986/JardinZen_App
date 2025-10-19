@@ -20,11 +20,11 @@
 
     <!-- Ingresar -->
     <TextView
-        android:text="@string/ingresar"
+        android:text="@string/txt_iniciarSesion"
         android:fontFamily="@font/comfortaa"
         android:textStyle="bold"
         android:textColor="@color/verde_fuente"
-        android:textSize="60sp"
+        android:textSize="50sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -35,8 +35,8 @@
         android:layout_height="55dp">
 
         <EditText
-            android:id="@+id/usuario"
-            android:hint="@string/usuario"
+            android:id="@+id/et_Correo"
+            android:hint="@string/et_Correo"
             android:inputType="textPersonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -50,8 +50,8 @@
         android:layout_height="55dp">
 
         <EditText
-            android:id="@+id/contrasena"
-            android:hint="@string/contrasena"
+            android:id="@+id/et_contrasena"
+            android:hint="@string/et_contrasena"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -60,8 +60,8 @@
 
     <!-- boton ingresar -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/boton"
-        android:text="@string/ingresar"
+        android:id="@+id/btn_ingresar"
+        android:text="@string/btn_ingresar"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         app:cornerRadius="20dp"
@@ -77,8 +77,8 @@
     <!-- enlace olvidar contraseña -->
     <TextView
         android:layout_marginTop="10dp"
-        android:id="@+id/olvidaste_contrasena"
-        android:text="@string/olvidaste_contrasena"
+        android:id="@+id/txt_olvidaste_contrasena"
+        android:text="@string/txt_olvidaste_contrasena"
         android:textColor="@color/azul_fuente"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -89,8 +89,8 @@
     <!-- ingresar con -->
     <TextView
         android:layout_marginTop="20dp"
-        android:id="@+id/ingresa_con"
-        android:text="@string/ingresa_con"
+        android:id="@+id/txt_ingresa_con"
+        android:text="@string/txt_ingresa_con"
         android:textColor="@color/verde_fuente2"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -127,8 +127,8 @@
     <!-- no tienes cuenta -->
     <TextView
         android:layout_marginTop="15dp"
-        android:id="@+id/no_tienes_cuenta"
-        android:text="@string/no_tienes_cuenta"
+        android:id="@+id/txt_no_tienes_cuenta"
+        android:text="@string/txt_no_tienes_cuenta"
         android:textColor="@color/verde_fuente2"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -138,8 +138,8 @@
 
     <!-- boton registrar -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/botonRegistrar"
-        android:text="@string/registrar"
+        android:id="@+id/btn_Registrar"
+        android:text="@string/btn_registrar"
         android:layout_marginTop="5dp"
         android:textSize="20sp"
         app:cornerRadius="15dp"

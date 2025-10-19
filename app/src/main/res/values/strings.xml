@@ -8,19 +8,20 @@
     <string name="guardar_cambios">Guardar cambios</string>
 
     <!-- Strings de Login -->
-    <string name="ingresar">Ingresar</string>
-    <string name="registrar">Registrar</string>
-    <string name="usuario">Usuario</string>
-    <string name="contrasena">Contraseña</string>
-    <string name="olvidaste_contrasena">¿Olvidaste tu contraseña?</string>
-    <string name="ingresa_con">O ingresa con</string>
-    <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
-    <string name="escribe_nombre_usuario">Escribe tu nombre de usuario</string>
-    <string name="correo_electronico">Correo Electrónico</string>
-    <string name="escribe_correo">Escribe tu correo electrónico</string>
-    <string name="escribe_contrasena">Escribe tu contraseña</string>
-    <string name="o">O</string>
-    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="txt_ingresar">Ingresar</string>
+    <string name="btn_ingresar">Ingresar</string>
+    <string name="txt_registrar">Registrar</string>
+    <string name="btn_registrar">Registrar</string>
+    <string name="et_Nombreusuario">Nombre de Usuario</string>
+    <string name="et_contrasena">Contraseña</string>
+    <string name="txt_olvidaste_contrasena">¿Olvidaste tu contraseña?</string>
+    <string name="txt_ingresa_con">O ingresa con</string>
+    <string name="txt_no_tienes_cuenta">¿No tienes cuenta?</string>
+    <string name="tv_correoElectronico">Correo Electrónico</string>
+    <string name="et_Correo">Escribe tu correo electrónico</string>
+    <string name="txt_o">O</string>
+    <string name="txt_iniciarSesion">Iniciar Sesión</string>
+    <string name="btn_iniciarSesion">Iniciar Sesión</string>
 
     <!-- Strings de Configuración -->
     <string name="configuracion">Configuración</string>

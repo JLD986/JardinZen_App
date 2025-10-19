@@ -20,7 +20,7 @@
 
     <!--Registrar-->
     <TextView
-        android:text="@string/registrar"
+        android:text="@string/txt_registrar"
         android:fontFamily="@font/comfortaa"
         android:textStyle="bold"
         android:textColor="@color/verde_fuente"
@@ -30,9 +30,9 @@
 
     <!--Nombre de usuario-->
     <TextView
-        android:text="@string/usuario"
+        android:text="@string/et_Nombreusuario"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="110dp"
+        android:layout_marginRight="52dp"
         android:textSize="20sp"
         android:textStyle="bold"
         android:fontFamily="@font/comfortaa"
@@ -45,8 +45,8 @@
         android:layout_height="55dp">
 
         <EditText
-            android:id="@+id/nombre_usuario"
-            android:hint="@string/escribe_nombre_usuario"
+            android:id="@+id/et_Nombreusuario"
+            android:hint="@string/et_Nombreusuario"
             android:inputType="textPersonName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -54,7 +54,7 @@
 
     <!--correo-->
     <TextView
-        android:text="@string/correo_electronico"
+        android:text="@string/tv_correoElectronico"
         android:layout_marginTop="10dp"
         android:layout_marginRight="55dp"
         android:textSize="20sp"
@@ -69,8 +69,8 @@
         android:layout_height="55dp">
 
         <EditText
-            android:id="@+id/correo_electronico"
-            android:hint="@string/escribe_correo"
+            android:id="@+id/et_Correo"
+            android:hint="@string/et_Correo"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -78,7 +78,7 @@
 
     <!--contraseña-->
     <TextView
-        android:text="@string/contrasena"
+        android:text="@string/et_contrasena"
         android:layout_marginTop="10dp"
         android:layout_marginRight="91dp"
         android:textSize="20sp"
@@ -94,17 +94,17 @@
         android:layout_height="55dp">
 
         <EditText
-            android:id="@+id/contrasena"
-            android:hint="@string/escribe_contrasena"
-            android:inputType="textPassword"
+            android:id="@+id/et_contrasena"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:hint="@string/et_contrasena"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--boton de registro-->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/botonRegistrar"
-        android:text="@string/registrar"
+        android:id="@+id/btn_registrar"
+        android:text="@string/btn_registrar"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         app:cornerRadius="15dp"
@@ -119,8 +119,8 @@
 
     <!--la o xd-->
     <TextView
-        android:id="@+id/o"
-        android:text="@string/o"
+        android:id="@+id/txt_o"
+        android:text="@string/txt_o"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/comfortaa"
         android:textSize="18sp"
@@ -132,8 +132,8 @@
     <!--enlace para iniciar sesion-->
     <TextView
         android:layout_marginTop="10dp"
-        android:id="@+id/iniciosesion"
-        android:text="@string/iniciar_sesion"
+        android:id="@+id/btn_iniciosesion"
+        android:text="@string/btn_iniciarSesion"
         android:fontFamily="@font/comfortaa"
         android:textSize="22sp"
         android:textStyle="bold"
