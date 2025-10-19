@@ -1,15 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige_claro"
-    tools:context="com.example.jardnzen_app.Fragmentos.FragmentEstadisticas">
-    
+    android:padding="16dp"
+    android:background="@color/beige_claro">
+
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/estadistica"
@@ -23,6 +21,7 @@
             android:layout_width="260dp"
             android:layout_height="60dp"/>
 
+        <!-- Spinner para seleccionar planta -->
         <Spinner
             android:id="@+id/seleccionar_planta"
             android:spinnerMode="dropdown"
@@ -30,171 +29,24 @@
             android:layout_marginLeft="30dp"
             android:padding="8dp"
             android:background="@drawable/spinner"
+            android:layout_marginBottom="16dp"
             android:layout_width="200dp"
             android:layout_height="48dp"/>
 
-        <!-- Cuadro principal de estadísticas -->
-        <LinearLayout
-            android:id="@+id/estadisticas_planta"
-            android:layout_marginTop="20dp"
-            android:background="#fffcfff5"
-            android:orientation="vertical"
-            android:elevation="2dp"
-            android:padding="16dp"
-            android:layout_marginBottom="24dp"
-            android:clipToOutline="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content">
+        <!-- Tarjeta 1: Humedad -->
+        <include layout="@layout/grafica_humedad"/>
 
-            <!-- Título -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/humedad_temperatura"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/comfortaa"
-                android:textColor="@color/verde_oscuro"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="12dp"/>
+        <!-- Tarjeta 2: Temperatura -->
+        <include layout="@layout/grafica_temperatura"/>
 
-            <!-- Indicadores de colores -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+        <!-- Tarjeta 3: Nivel de Luz -->
+        <include layout="@layout/grafica_luz"/>
 
-                <!--cuadro verde-->
-                <LinearLayout
-                    android:background="@color/verde_oscuro"
-                    android:layout_marginEnd="6dp"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"/>
+        <!-- Tarjeta 4: Nivel de Agua -->
+        <include layout="@layout/grafica_agua"/>
 
-                <TextView
-                    android:text="@string/humedad"
-                    android:textColor="@color/gris_fuente"
-                    android:fontFamily="@font/comfortaa"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <!-- Cuadro azul -->
-
-                <LinearLayout
-                    android:background="@color/azul"
-                    android:layout_marginEnd="16dp"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"/>
-                
-                <TextView
-                    android:text="@string/temperatura_c"
-                    android:textColor="@color/gris_fuente"
-                    android:fontFamily="@font/comfortaa"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <!--grafica-->
-            <FrameLayout
-                android:id="@+id/grafica"
-                android:background="@color/verde_boton"
-                android:layout_marginBottom="12dp"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="(Gráfica aquí)"
-                    android:textColor="#AAAAAA"
-                    android:fontFamily="@font/comfortaa"/>
-
-            </FrameLayout>
-
-            <!--ultimo riego-->
-            <TextView
-                android:id="@+id/ultimo_riego"
-                android:text="@string/ultimo_riego"
-                android:textColor="@color/gris_fuente"
-                android:fontFamily="@font/comfortaa"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginLeft="90dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <!-- historial -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:background="@color/verde_fondo"
-                android:padding="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center_horizontal"
-                android:clipToOutline="true"
-                android:backgroundTint="@color/verde_fondo"
-                android:elevation="2dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                
-                <!--tabla-->
-                <TableLayout
-                    android:id="@+id/historial"
-                    android:shrinkColumns="1"
-                    android:stretchColumns="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TableRow>
-                        <TextView
-                            android:text="@string/fecha"
-                            android:textColor="@color/gris_fuente"
-                            android:fontFamily="@font/comfortaa"
-                            android:textStyle="bold"
-                            android:padding="4dp"/>
-
-                        <TextView
-                            android:text="@string/temperatura_c"
-                            android:textColor="@color/gris_fuente"
-                            android:fontFamily="@font/comfortaa"
-                            android:textStyle="bold"
-                            android:padding="4dp"/>
-
-                        <TextView
-                            android:text="@string/humedad"
-                            android:textColor="@color/gris_fuente"
-                            android:fontFamily="@font/comfortaa"
-                            android:textStyle="bold"
-                            android:padding="4dp"/>
-                    </TableRow>
-
-                    <!-- Ejemplo de datos -->
-                    <TableRow>
-                        <TextView android:text="15 Oct" android:padding="4dp"/>
-                        <TextView android:text="23°C" android:padding="4dp"/>
-                        <TextView android:text="48%" android:padding="4dp"/>
-                    </TableRow>
-
-                    <TableRow>
-                        <TextView android:text="14 Oct" android:padding="4dp"/>
-                        <TextView android:text="24°C" android:padding="4dp"/>
-                        <TextView android:text="50%" android:padding="4dp"/>
-                    </TableRow>
-
-                </TableLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
+        <!-- Tarjeta 5: Historial General -->
+        <include layout="@layout/item_historial_general"/>
 
     </LinearLayout>
-
-</FrameLayout>
+</ScrollView>
