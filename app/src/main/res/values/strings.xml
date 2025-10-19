@@ -14,7 +14,7 @@
     <string name="btn_registrar">Registrar</string>
     <string name="et_Nombreusuario">Nombre de Usuario</string>
     <string name="et_contrasena">Contraseña</string>
-    <string name="txt_olvidaste_contrasena">¿Olvidaste tu contraseña?</string>
+    <string name="txt_olvidasteContrasena">¿Olvidaste tu contraseña?</string>
     <string name="txt_ingresa_con">O ingresa con</string>
     <string name="txt_no_tienes_cuenta">¿No tienes cuenta?</string>
     <string name="tv_correoElectronico">Correo Electrónico</string>
