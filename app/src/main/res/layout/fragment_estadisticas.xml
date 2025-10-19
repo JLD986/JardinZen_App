@@ -1,52 +1,58 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/beige_claro">
+    xmlns:tools="http://schemas.android.com/tools"
 
-    <LinearLayout
+    android:background="@color/beige_claro"
+    tools:context="com.example.jardnzen_app.Fragmentos.FragmentEstadisticas">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/estadistica"
-            android:text="@string/estadisticas"
-            android:fontFamily="@font/comfortaa"
-            android:textStyle="bold"
-            android:textColor="@color/verde_fuente"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:textSize="40sp"
-            android:layout_width="260dp"
-            android:layout_height="60dp"/>
+            <TextView
+                android:id="@+id/estadistica"
+                android:text="@string/estadisticas"
+                android:fontFamily="@font/comfortaa"
+                android:textStyle="bold"
+                android:textColor="@color/verde_fuente"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="40sp"
+                android:layout_width="260dp"
+                android:layout_height="60dp"/>
 
-        <!-- Spinner para seleccionar planta -->
-        <Spinner
-            android:id="@+id/seleccionar_planta"
-            android:spinnerMode="dropdown"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="30dp"
-            android:padding="8dp"
-            android:background="@drawable/spinner"
-            android:layout_marginBottom="16dp"
-            android:layout_width="200dp"
-            android:layout_height="48dp"/>
+            <!-- Spinner para seleccionar planta -->
+            <Spinner
+                android:id="@+id/seleccionar_planta"
+                android:spinnerMode="dropdown"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="30dp"
+                android:padding="8dp"
+                android:background="@drawable/spinner"
+                android:layout_marginBottom="16dp"
+                android:layout_width="200dp"
+                android:layout_height="48dp"/>
 
-        <!-- Tarjeta 1: Humedad -->
-        <include layout="@layout/grafica_humedad"/>
+            <!-- Tarjeta 1: Humedad -->
+            <include layout="@layout/grafica_humedad"/>
 
-        <!-- Tarjeta 2: Temperatura -->
-        <include layout="@layout/grafica_temperatura"/>
+            <!-- Tarjeta 2: Temperatura -->
+            <include layout="@layout/grafica_temperatura"/>
 
-        <!-- Tarjeta 3: Nivel de Luz -->
-        <include layout="@layout/grafica_luz"/>
+            <!-- Tarjeta 3: Nivel de Luz -->
+            <include layout="@layout/grafica_luz"/>
 
-        <!-- Tarjeta 4: Nivel de Agua -->
-        <include layout="@layout/grafica_agua"/>
+            <!-- Tarjeta 4: Nivel de Agua -->
+            <include layout="@layout/grafica_agua"/>
 
-        <!-- Tarjeta 5: Historial General -->
-        <include layout="@layout/item_historial_general"/>
+            <!-- Tarjeta 5: Historial General -->
+            <include layout="@layout/item_historial_general"/>
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
