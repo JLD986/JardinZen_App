@@ -6,134 +6,140 @@
     android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentConfiguraciones">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/comfortaa"
-            android:text="@string/configuracion"
-            android:textColor="@color/verde_fuente"
-            android:textSize="40sp"
-            android:textStyle="bold" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/card_border"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_riego_manual"
-                android:thumb="@drawable/switch_thumb"
-                app:track="@drawable/switch_track"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/tv_riego_manual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/comfortaa"
-                android:textStyle="bold"
-                android:text="@string/activar_riego_manual"
-                android:textColor="@color/verde_fuente"
-                android:textSize="25sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/card_border"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_reloj" />
+            android:orientation="vertical"
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/comfortaa"
-                android:textStyle="bold"
-                android:text="@string/programar_riego"
+                android:text="@string/configuracion"
                 android:textColor="@color/verde_fuente"
-                android:textSize="25sp" />
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/card_border"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_gota_agua" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/comfortaa"
-                android:textStyle="bold"
-                android:text="@string/ajustar_nivel_minimo_humedad"
-                android:textColor="@color/verde_fuente"
-                android:textSize="24sp"/>
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/card_border"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
 
-        </LinearLayout>
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_riego_manual"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/card_border"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp">
+                <TextView
+                    android:id="@+id/tv_riego_manual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:textStyle="bold"
+                    android:text="@string/activar_riego_manual"
+                    android:textColor="@color/verde_fuente"
+                    android:textSize="25sp" />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_notificaciones" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/comfortaa"
-                android:textStyle="bold"
-                android:text="@string/configuracion_alertas"
-                android:textColor="@color/verde_fuente"
-                android:textSize="25sp" />
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/card_border"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_reloj" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:textStyle="bold"
+                    android:text="@string/programar_riego"
+                    android:textColor="@color/verde_fuente"
+                    android:textSize="25sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/card_border"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_gota_agua" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:textStyle="bold"
+                    android:text="@string/ajustar_nivel_minimo_humedad"
+                    android:textColor="@color/verde_fuente"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/card_border"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_notificaciones" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:textStyle="bold"
+                    android:text="@string/configuracion_alertas"
+                    android:textColor="@color/verde_fuente"
+                    android:textSize="25sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
