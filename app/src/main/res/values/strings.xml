@@ -49,10 +49,8 @@
     <string name="humedad_suelo">Humedad del suelo</string>
     <string name="nivel_luz">Nivel de luz</string>
     <string name="nivel_agua">Nivel de agua</string>
-    <string name="descripcion_planta">%1$s</string>
     <string name="consejos_planta">%1$s</string>
-    <string name="riego_automatico_activado">Riego automático activado</string>
-    <string name="riego_automatico_desactivado">Riego automático desactivado</string>
+    <string name="btn_riego_automatico">Riego automático %1$s</string>
     <string name="regar">Regar</string>
     <string name="ultimo_riego">Último riego: %1$s</string>
 
