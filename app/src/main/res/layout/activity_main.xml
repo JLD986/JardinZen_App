@@ -40,8 +40,8 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/content"
-        android:layout_above="@id/view"
+        android:id="@+id/fragmentoFL"
+        android:layout_above="@id/bottomNV"
         android:layout_below="@+id/header"
         android:background="@color/beige_claro"
         android:layout_width="match_parent"
@@ -49,17 +49,19 @@
 
     <View
         android:id="@+id/view"
-        android:layout_above="@+id/bottom_nav"
+        android:layout_above="@+id/bottomNV"
         android:background="@color/verde_oscuro"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/nav_menu"
-        android:background="@color/verde_claro"
+        android:id="@+id/bottomNV"
         android:layout_width="match_parent"
-        android:layout_height="75dp" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/verde_claro"
+        app:menu="@menu/nav_menu"
+        app:itemIconSize="25dp"/>
+
 
 </RelativeLayout>
