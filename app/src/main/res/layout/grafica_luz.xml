@@ -20,17 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <FrameLayout
-        android:id="@+id/contenedor_grafica"
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chartHumedad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="(Gráfica aquí)"
-            android:textColor="#AAAAAA"
-            android:fontFamily="@font/comfortaa"/>
-    </FrameLayout>
+        android:layout_height="200dp" />
 
 </LinearLayout>
