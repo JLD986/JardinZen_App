@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="negro">#FF000000</color>
+    <color name="blanco">#FFFFFFFF</color>
     <color name="cafe_claro">#ffeddfcc</color>
     <color name="beige_claro">#fff7fae8</color>
     <color name="verde_claro">#ffe2ffdb</color>
@@ -19,6 +19,6 @@
     <color name="verde_despliegue">#ffe8ffd4</color>
     <color name="azul_fuente">#ff145bde</color>
     <color name="verde_boton">#ffe7ffe3</color>
-    <color name="blanco">#ffffffff</color>
     <color name="verde_desactivado">#ffc7e3c8</color>
+    <color name="verde_fuente3">#ff2e7d32</color>
 </resources>
