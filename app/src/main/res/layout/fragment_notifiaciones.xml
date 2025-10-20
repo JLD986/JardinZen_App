@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@drawable/filtro_bg_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="Todas"
+                android:text="@string/todos"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente"/>
 
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@drawable/filtro_bg_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="Agua"
+                android:text="@string/agua"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@drawable/filtro_bg_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="Luz"
+                android:text="@string/luz"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@drawable/filtro_bg_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="Temperatura"
+                android:text="@string/temperatura_c"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@drawable/filtro_bg_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="Humedad"
+                android:text="@string/humedad"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@drawable/filtro_bg_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="Mantenimiento"
+                android:text="@string/mantenimiento"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
