@@ -47,10 +47,7 @@
             <!-- Tarjeta 3: Nivel de Luz -->
             <include layout="@layout/grafica_luz"/>
 
-            <!-- Tarjeta 4: Nivel de Agua -->
-            <include layout="@layout/grafica_agua"/>
-
-            <!-- Tarjeta 5: Historial General -->
+            <!-- Tarjeta 4: Historial General -->
             <include layout="@layout/item_historial_general"/>
 
         </LinearLayout>

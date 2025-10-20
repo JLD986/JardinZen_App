@@ -42,12 +42,4 @@
         android:textColor="@color/verde_oscuro"
         android:fontFamily="@font/comfortaa"/>
 
-    <TextView
-        android:id="@+id/tvAgua"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="2.4 L"
-        android:textColor="@color/verde_oscuro"
-        android:fontFamily="@font/comfortaa"/>
 </LinearLayout>
