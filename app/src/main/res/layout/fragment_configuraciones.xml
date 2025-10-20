@@ -30,8 +30,8 @@
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="55dp"
                 android:background="@drawable/card_border"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -60,35 +60,8 @@
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="35dp"
-                android:background="@drawable/card_border"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_reloj" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:fontFamily="@font/comfortaa"
-                    android:textStyle="bold"
-                    android:text="@string/programar_riego"
-                    android:textColor="@color/verde_fuente"
-                    android:textSize="25sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="55dp"
                 android:background="@drawable/card_border"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -114,8 +87,8 @@
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="55dp"
                 android:background="@drawable/card_border"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
