@@ -62,62 +62,130 @@
                 android:layout_weight="1">
 
                 <TableLayout
-                    android:shrinkColumns="1"
-                    android:stretchColumns="1"
+                    android:shrinkColumns="*"
+                    android:stretchColumns="*"
                     android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TableRow>
-                        <!--temperatura-->
-                        <TextView
-                            android:id="@+id/Temperatura"
-                            android:text="@string/temperatura"
-                            android:textColor="@color/verde_oscuro"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/comfortaa"
-                            android:textStyle="bold"
-                            android:padding="4dp"
+                        <!-- Temperatura -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="2dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content">
 
-                        <!--humedad-->
-                        <TextView
-                            android:id="@+id/Humedad"
-                            android:text="@string/humedad_suelo"
-                            android:textColor="@color/verde_oscuro"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/comfortaa"
-                            android:textStyle="bold"
-                            android:padding="4dp"
+                            <TextView
+                                android:id="@+id/Temperatura"
+                                android:text="@string/temperatura"
+                                android:textColor="@color/verde_oscuro"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/comfortaa"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/dato_temperatura"
+                                tools:text="22 °C"
+                                android:textColor="@color/verde_fuente2"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/comfortaa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <!-- Humedad -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="2dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/Humedad"
+                                android:text="@string/humedad_suelo"
+                                android:textColor="@color/verde_oscuro"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/comfortaa"
+                                android:textStyle="bold"
+                                android:layout_width="90dp"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/dato_humedad"
+                                tools:text="45%"
+                                android:textColor="@color/verde_fuente2"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/comfortaa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
                     </TableRow>
 
                     <TableRow>
-                        <!--nivel de sol-->
-                        <TextView
-                            android:id="@+id/Luz"
-                            android:text="@string/nivel_luz"
-                            android:textColor="@color/verde_oscuro"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/comfortaa"
-                            android:textStyle="bold"
-                            android:padding="4dp"
+                        <!-- Nivel de luz -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="2dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content">
 
-                        <!--nivel de agua-->
-                        <TextView
-                            android:id="@+id/agua"
-                            android:text="@string/nivel_agua"
-                            android:textColor="@color/verde_oscuro"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/comfortaa"
-                            android:textStyle="bold"
-                            android:padding="4dp"
+                            <TextView
+                                android:id="@+id/Luz"
+                                android:text="@string/nivel_luz"
+                                android:textColor="@color/verde_oscuro"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/comfortaa"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/dato_luz"
+                                tools:text="300 lux"
+                                android:textColor="@color/verde_fuente2"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/comfortaa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                        <!-- Nivel de agua -->
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="2dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/agua"
+                                android:text="@string/nivel_agua"
+                                android:textColor="@color/verde_oscuro"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/comfortaa"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/dato_agua"
+                                tools:text="2.5 L"
+                                android:textColor="@color/verde_fuente2"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/comfortaa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
                     </TableRow>
 
                 </TableLayout>
