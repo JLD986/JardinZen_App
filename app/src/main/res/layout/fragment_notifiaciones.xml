@@ -1,13 +1,132 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/beige_claro"
+    android:orientation="vertical"
+    android:padding="5dp"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentNotifiaciones">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="@string/notificaciones"
+        android:fontFamily="@font/comfortaa"
+        android:textStyle="bold"
+        android:textColor="@color/verde_fuente"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="40sp"
+        android:layout_width="303dp"
+        android:layout_height="60dp"/>
 
-</FrameLayout>
+    <!--filtros-->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:scrollbars="none">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggle_group_filtros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_filtro_todas"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:fontFamily="@font/comfortaa"
+                android:text="Todas"
+                android:textColor="@color/verde_fuente"
+                app:strokeColor="@color/verde_fuente"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_filtro_agua"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:fontFamily="@font/comfortaa"
+                android:text="Agua"
+                android:textColor="@color/verde_fuente"
+                app:strokeColor="@color/verde_fuente" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_filtro_luz"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:fontFamily="@font/comfortaa"
+                android:text="Luz"
+                android:textColor="@color/verde_fuente"
+                app:strokeColor="@color/verde_fuente" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_filtro_temperatura"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:fontFamily="@font/comfortaa"
+                android:text="Temperatura"
+                android:textColor="@color/verde_fuente"
+                app:strokeColor="@color/verde_fuente" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_filtro_humedad"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:fontFamily="@font/comfortaa"
+                android:text="Humedad"
+                android:textColor="@color/verde_fuente"
+                app:strokeColor="@color/verde_fuente" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_filtro_mantenimiento"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:fontFamily="@font/comfortaa"
+                android:text="Mantenimiento"
+                android:textColor="@color/verde_fuente"
+                app:strokeColor="@color/verde_fuente" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_noti"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/item_notificacion"/>
+
+    <!--boton-->
+    <Button
+        android:id="@+id/btn_marcar_leido"
+        android:text="@string/marcar_todos_leido"
+        android:fontFamily="@font/comfortaa"
+        android:textColor="@color/blanco"
+        android:backgroundTint="@color/verde_oscuro"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="10dp"
+        app:cornerRadius="12dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
