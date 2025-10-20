@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige_claro"
+    tools:context="com.example.jardnzen_app.Fragmentos.FragmentAjusteHumedad">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nivel_minimo_humedad"
+            android:textColor="@color/verde_fuente"
+            android:textSize="40sp"
+            android:fontFamily="@font/comfortaa"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/define_porcentaje_humedad"
+            android:background="@drawable/card_border"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/verde_fuente"
+            android:gravity="center"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ajuste_nivel_humedad_adecuado"
+            android:textColor="@color/verde_fuente"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/comfortaa"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/card_border"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textStyle="bold"
+                android:textColor="@color/verde_fuente"
+                android:fontFamily="@font/comfortaa"
+                android:layout_marginEnd="8dp"/>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_humedad"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:value="45"
+                android:valueFrom="0"
+                android:valueTo="100"
+                android:stepSize="1"
+                app:labelBehavior="gone"
+                app:trackColorActive="@color/verde_fuente"
+                app:trackColorInactive="@color/slider"
+                app:thumbColor="@color/blanco"
+                app:thumbStrokeColor="@color/verde_fuente"
+                app:thumbStrokeWidth="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:textStyle="bold"
+                android:textColor="@color/verde_fuente"
+                android:fontFamily="@font/comfortaa"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_estado_suelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/estado_actual_suelo"
+            android:textColor="@color/verde_fuente2"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/comfortaa"
+            android:layout_marginBottom="25dp"/>
+
+        <TextView
+            android:id="@+id/tv_riego_automatico_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/riego_activado_si_baja"
+            android:textColor="@color/verde_fuente2"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/comfortaa"
+            android:layout_marginBottom="32dp"/>
+
+        <Button
+            android:id="@+id/btn_guardar_cambios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar cambios"
+            android:backgroundTint="@color/verde_oscuro"
+            android:textColor="@color/blanco"
+            android:fontFamily="@font/comfortaa"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="12dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
