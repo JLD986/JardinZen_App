@@ -23,20 +23,10 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textSize="40sp"
+                android:layout_marginBottom="20dp"
                 android:layout_width="260dp"
                 android:layout_height="60dp"/>
 
-            <!-- Spinner para seleccionar planta -->
-            <Spinner
-                android:id="@+id/seleccionar_planta"
-                android:spinnerMode="dropdown"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="30dp"
-                android:padding="8dp"
-                android:background="@drawable/spinner"
-                android:layout_marginBottom="16dp"
-                android:layout_width="200dp"
-                android:layout_height="48dp"/>
 
             <!-- Tarjeta 1: Humedad -->
             <include layout="@layout/grafica_humedad"/>
@@ -47,10 +37,7 @@
             <!-- Tarjeta 3: Nivel de Luz -->
             <include layout="@layout/grafica_luz"/>
 
-            <!-- Tarjeta 4: Nivel de Agua -->
-            <include layout="@layout/grafica_agua"/>
-
-            <!-- Tarjeta 5: Historial General -->
+            <!-- Tarjeta 4: Historial General -->
             <include layout="@layout/item_historial_general"/>
 
         </LinearLayout>
