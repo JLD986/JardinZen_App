@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentConfiguraciones">
 
@@ -34,8 +35,10 @@
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_riego_manual"
+                android:thumb="@drawable/switch_thumb"
+                app:track="@drawable/switch_track"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tv_riego_manual"
@@ -100,7 +103,7 @@
                 android:textStyle="bold"
                 android:text="@string/ajustar_nivel_minimo_humedad"
                 android:textColor="@color/verde_fuente"
-                android:textSize="25sp" />
+                android:textSize="24sp"/>
 
         </LinearLayout>
 
