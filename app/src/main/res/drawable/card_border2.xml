@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Fondo -->
+    <solid android:color="@color/verde_target2"/> <!-- color de fondo de la tarjeta -->
+
+    <!-- Borde -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/verde_oscuro"/> <!-- color del borde -->
+
+    <!-- Esquinas redondeadas -->
+    <corners android:radius="16dp"/>
+</shape>
