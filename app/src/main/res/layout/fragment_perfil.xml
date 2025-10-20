@@ -204,22 +204,6 @@
             android:layout_marginHorizontal="20dp"
             android:gravity="center_horizontal">
 
-            <Button
-                android:id="@+id/btn_editar_perfil"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/editor_perfil"
-                android:backgroundTint="@color/verde_boton"
-                app:strokeColor="@color/verde_fuente2"
-                app:strokeWidth="2dp"
-                android:textStyle="bold"
-                android:textColor="@color/verde_fuente"
-                android:fontFamily="@font/comfortaa"
-                android:paddingHorizontal="10dp"
-                android:textSize="15sp"
-                android:textAllCaps="false"
-                android:layout_gravity="center"
-                android:layout_marginEnd="8dp"/>
 
             <Button
                 android:id="@+id/btn_cambiar_contrasena"
