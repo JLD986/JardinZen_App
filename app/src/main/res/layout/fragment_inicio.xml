@@ -41,7 +41,7 @@
             android:layout_marginTop="20dp"
             android:clipToPadding="false"
             android:layout_gravity="center"
-            android:layout_width="380dp"
+            android:layout_width="390dp"
             android:layout_height="match_parent"
             tools:listitem="@layout/target_planta"/>
 
