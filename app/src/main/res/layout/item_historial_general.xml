@@ -28,7 +28,7 @@
         android:background="@drawable/blanco_redondeado">
 
         <TextView
-            android:layout_weight="0.5"
+            android:layout_weight="0.7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Fecha"
@@ -63,14 +63,6 @@
             android:textColor="@color/verde_oscuro"
             android:fontFamily="@font/comfortaa"/>
 
-        <TextView
-            android:layout_weight="0.5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Agua"
-            android:textStyle="bold"
-            android:textColor="@color/verde_oscuro"
-            android:fontFamily="@font/comfortaa"/>
     </LinearLayout>
 
     <!-- RecyclerView para los registros -->
