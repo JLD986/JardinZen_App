@@ -22,4 +22,5 @@
     <color name="verde_desactivado">#ffc7e3c8</color>
     <color name="verde_fuente3">#ff2e7d32</color>
     <color name="verde_target2">#ffe4ffe3</color>
+    <color name="slider">#ff93bf80</color>
 </resources>
