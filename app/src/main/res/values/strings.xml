@@ -52,7 +52,8 @@
     <string name="consejos_planta">%1$s</string>
     <string name="btn_riego_automatico">Riego automático %1$s</string>
     <string name="regar">Regar</string>
-    <string name="ultimo_riego">Último riego: %1$s</string>
+    <string name="btn_detener_riego">Detener riego</string>
+    <string name="txt_ultimo_riego">Último riego: %1$s</string>
 
     <!-- Strings de Estadísticas -->
     <string name="estadisticas">Estadísticas</string>

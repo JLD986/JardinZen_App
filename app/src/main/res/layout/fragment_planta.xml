@@ -232,13 +232,29 @@
             app:strokeColor="@color/verde_fuente2"
             app:strokeWidth="2dp"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_detener_riego"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:backgroundTint="@color/regar_button_background_selector"
+            android:fontFamily="@font/comfortaa"
+            android:paddingHorizontal="40dp"
+            android:text="@string/btn_detener_riego"
+            android:textStyle="bold"
+            android:textColor="@color/regar_button_text_selector"
+            android:textSize="18sp"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/verde_fuente2"
+            app:strokeWidth="2dp"/>
+
         <TextView
             android:id="@+id/ultimo_riego"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="24dp"
-            android:text="@string/ultimo_riego"
+            android:text="@string/txt_ultimo_riego"
             android:textStyle="bold"
             android:textColor="@color/verde_fuente"
             android:fontFamily="@font/comfortaa"
