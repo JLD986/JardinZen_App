@@ -28,8 +28,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="12dp"
-                android:src=""
-                app:tint="@color/verde_oscuro" />
+                android:src="@drawable/ic_gota_agua" />
 
             <LinearLayout
                 android:orientation="vertical"

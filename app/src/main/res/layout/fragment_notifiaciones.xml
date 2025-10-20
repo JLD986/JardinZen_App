@@ -30,6 +30,7 @@
             android:id="@+id/toggle_group_filtros"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
             app:singleSelection="true"
             app:selectionRequired="true">
 
@@ -38,9 +39,11 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="8dp"
+                android:backgroundTint="@color/filtro_bg_color_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="@string/todos"
+                android:text="Todas"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente"/>
 
@@ -49,9 +52,11 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="8dp"
+                android:backgroundTint="@color/filtro_bg_color_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="@string/agua"
+                android:text="Agua"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -60,9 +65,11 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="8dp"
+                android:backgroundTint="@color/filtro_bg_color_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="@string/luz"
+                android:text="Luz"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -71,9 +78,11 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="8dp"
+                android:backgroundTint="@color/filtro_bg_color_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="@string/temperatura_c"
+                android:text="Temperatura"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -82,9 +91,11 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@drawable/filtro_bg_selector"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="8dp"
+                android:backgroundTint="@color/filtro_bg_color_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="@string/humedad"
+                android:text="Humedad"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -93,9 +104,10 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@drawable/filtro_bg_selector"
+                app:cornerRadius="8dp"
+                android:backgroundTint="@color/filtro_bg_color_selector"
                 android:fontFamily="@font/comfortaa"
-                android:text="@string/mantenimiento"
+                android:text="Mantenimiento"
                 android:textColor="@color/verde_fuente"
                 app:strokeColor="@color/verde_fuente" />
 
@@ -119,7 +131,6 @@
         android:textColor="@color/blanco"
         android:backgroundTint="@color/verde_oscuro"
         android:textStyle="bold"
-        android:textSize="16sp"
         android:paddingHorizontal="24dp"
         android:paddingVertical="10dp"
         app:cornerRadius="12dp"

@@ -20,4 +20,5 @@
     <color name="azul_fuente">#ff145bde</color>
     <color name="verde_boton">#ffe7ffe3</color>
     <color name="blanco">#ffffffff</color>
+    <color name="verde_desactivado">#ffc7e3c8</color>
 </resources>
