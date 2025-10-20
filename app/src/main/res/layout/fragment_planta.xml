@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige_claro"
+    tools:context="com.example.jardnzen_app.Fragmentos.FragmentPlanta">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imagen_planta"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/planta"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/nombre_planta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pensamiento"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/verde_fuente"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/estado_planta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/estado"
+            android:fontFamily="@font/comfortaa"
+            android:textColor="@color/verde_fuente3"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:useDefaultMargins="true">
+
+            <!-- Temperatura -->
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_border"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_termometro"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temperatura"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/verde_oscuro"
+                    android:fontFamily="@font/comfortaa"/>
+
+                <TextView
+                    android:id="@+id/valor_temperatura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22 °C"
+                    android:textColor="@color/verde_fuente2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comfortaa"/>
+            </LinearLayout>
+
+            <!-- Humedad del suelo -->
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_border"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_humedad"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/humedad_suelo"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/verde_oscuro"
+                    android:fontFamily="@font/comfortaa"/>
+
+                <TextView
+                    android:id="@+id/valor_humedad_suelo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45%"
+                    android:textColor="@color/verde_fuente2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comfortaa"/>
+            </LinearLayout>
+
+            <!-- Nivel de luz -->
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_border"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_sol"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nivel_luz"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/verde_oscuro"
+                    android:fontFamily="@font/comfortaa"/>
+
+                <TextView
+                    android:id="@+id/valor_luz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="300 lux"
+                    android:textColor="@color/verde_fuente2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comfortaa"/>
+            </LinearLayout>
+
+            <!-- Nivel de agua -->
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_border"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_gota_agua"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nivel_agua"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/verde_oscuro"
+                    android:fontFamily="@font/comfortaa"/>
+
+                <TextView
+                    android:id="@+id/valor_agua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.5 L"
+                    android:textColor="@color/verde_fuente2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comfortaa"/>
+            </LinearLayout>
+
+        </GridLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/card_border"
+            android:padding="16dp"
+            android:text="@string/consejos_planta"
+            android:textStyle="bold"
+            android:textColor="@color/verde_fuente"
+            android:fontFamily="@font/comfortaa"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/ultimo_riego"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/ultimo_riego"
+            android:textStyle="bold"
+            android:textColor="@color/verde_fuente"
+            android:fontFamily="@font/comfortaa"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</ScrollView>
