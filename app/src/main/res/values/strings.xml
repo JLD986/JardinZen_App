@@ -82,6 +82,8 @@
     <string name="estado_bajo">bajo</string>
     <string name="estado_alto">alto</string>
     <string name="riego_activado_si_baja">Riego automático: activado si baja de %1$d %%.</string>
+    <string name="porcentaje_suelo">0%</string>
+    <string name="porcentaje_suelo_100">100%</string>
 
     <!-- Strings de Configuración de Alertas -->
     <string name="configuracion_alertas_titulo">Configuración de alertas</string>
