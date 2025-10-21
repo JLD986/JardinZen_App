@@ -89,7 +89,12 @@
     <string name="humedad_suelo_baja_desc">Avisar cuando la humedad del suelo esté por debajo del nivel mínimo configurado.</string>
     <string name="exceso_luz_solar_desc">Enviar alerta si la exposición supera las %1$d h continuas.</string>
     <string name="temperatura_extrema_desc">Notificar si la temperatura ambiental es mayor a %1$d °C o menor a %2$d °C.</string>
-    <string name="mantenimiento_sensor_desc">Recordar revisión %1$s del sistema de sensores.</string>
+    <string name="mantenimiento_sensor_desc">Recordar revisión del sistema de sensores.</string>
+    <string name="txt_nivel_agua">Nivel de agua bajo</string>
+    <string name="txt_humedad_suelo_baja">Humedad del suelo baja</string>
+    <string name="txt_exceso_luz">Exceso de luz solar</string>
+    <string name="txt_temperatura_extrema">Temperatura extrema</string>
+    <string name="txt_mantenimiento_sensor">Mantenimiento del sensor</string>
 
     <!-- Estados y valores predeterminados -->
     <string name="activo">Activo</string>
