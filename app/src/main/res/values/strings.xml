@@ -105,4 +105,9 @@
     <string name="manual">Manual</string>
     <string name="saludable">Saludable</string>
     <string name="necesita_atencion">Necesita atención</string>
+
+    <!--Strins de cerrar sesion-->
+    <string name="txt_mnsj_cerrar_sesion">¿Estás seguro que deseas cerrar sesión?</string>
+    <string name="btn_no">No</string>
+    <string name="btn_si">Sí</string>
 </resources>
