@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige_claro"
+    tools:context="com.example.jardnzen_app.Fragmentos.FragmentAlertas">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/configuracion_alertas_titulo"
+            android:textColor="@color/verde_fuente"
+            android:textSize="40sp"
+            android:fontFamily="@font/comfortaa"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Nivel de agua bajo -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_border2"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/icon_agua"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_gota_agua"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_agua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/txt_nivel_agua"
+                android:textColor="@color/verde_fuente"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/icon_agua"
+                app:layout_constraintStart_toEndOf="@id/icon_agua"
+                app:layout_constraintTop_toTopOf="@id/icon_agua" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_alerta_agua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/switch_thumb"
+                app:layout_constraintBottom_toBottomOf="@id/title_agua"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_agua"
+                app:track="@drawable/switch_track" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/nivel_agua_bajo_desc"
+                android:textColor="@color/verde_fuente"
+                app:layout_constraintEnd_toEndOf="@id/switch_alerta_agua"
+                app:layout_constraintStart_toStartOf="@id/title_agua"
+                app:layout_constraintTop_toBottomOf="@id/title_agua" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Humedad del suelo baja -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_border2"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/icon_humedad"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_humedad"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_humedad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/txt_humedad_suelo_baja"
+                android:textColor="@color/verde_fuente"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@id/icon_humedad"
+                app:layout_constraintStart_toEndOf="@id/icon_humedad"
+                app:layout_constraintTop_toTopOf="@id/icon_humedad" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_alerta_humedad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/switch_thumb"
+                app:layout_constraintBottom_toBottomOf="@id/title_humedad"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_humedad"
+                app:track="@drawable/switch_track" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/humedad_suelo_baja_desc"
+                android:textColor="@color/verde_fuente"
+                app:layout_constraintEnd_toEndOf="@id/switch_alerta_humedad"
+                app:layout_constraintStart_toStartOf="@id/title_humedad"
+                app:layout_constraintTop_toBottomOf="@id/title_humedad" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Exceso de luz solar -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_border2"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/icon_luz"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_sol"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_luz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/txt_exceso_luz"
+                android:textColor="@color/verde_fuente"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/icon_luz"
+                app:layout_constraintStart_toEndOf="@id/icon_luz"
+                app:layout_constraintTop_toTopOf="@id/icon_luz" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_alerta_luz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/switch_thumb"
+                app:layout_constraintBottom_toBottomOf="@id/title_luz"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_luz"
+                app:track="@drawable/switch_track" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/exceso_luz_solar_desc"
+                android:textColor="@color/verde_fuente"
+                app:layout_constraintEnd_toEndOf="@id/switch_alerta_luz"
+                app:layout_constraintStart_toStartOf="@id/title_luz"
+                app:layout_constraintTop_toBottomOf="@id/title_luz" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Temperatura extrema -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_border2"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/icon_temp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_termometro"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/txt_temperatura_extrema"
+                android:textColor="@color/verde_fuente"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/icon_temp"
+                app:layout_constraintStart_toEndOf="@id/icon_temp"
+                app:layout_constraintTop_toTopOf="@id/icon_temp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_alerta_temperatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/switch_thumb"
+                app:layout_constraintBottom_toBottomOf="@id/title_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_temp"
+                app:track="@drawable/switch_track" />
+
+            <TextView
+                android:layout_width="282dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/temperatura_extrema_desc"
+                android:textColor="@color/verde_fuente"
+                app:layout_constraintEnd_toEndOf="@id/switch_alerta_temperatura"
+                app:layout_constraintStart_toStartOf="@id/title_temp"
+                app:layout_constraintTop_toBottomOf="@id/title_temp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Mantenimiento del sensor -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_border2"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/icon_mantenimiento"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_dispositivo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_mantenimiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/txt_mantenimiento_sensor"
+                android:textColor="@color/verde_fuente"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/icon_mantenimiento"
+                app:layout_constraintStart_toEndOf="@id/icon_mantenimiento"
+                app:layout_constraintTop_toTopOf="@id/icon_mantenimiento" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_alerta_mantenimiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/switch_thumb"
+                app:layout_constraintBottom_toBottomOf="@id/title_mantenimiento"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title_mantenimiento"
+                app:track="@drawable/switch_track" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/comfortaa"
+                android:text="@string/mantenimiento_sensor_desc"
+                android:textColor="@color/verde_fuente"
+                app:layout_constraintEnd_toEndOf="@id/switch_alerta_mantenimiento"
+                app:layout_constraintStart_toStartOf="@id/title_mantenimiento"
+                app:layout_constraintTop_toBottomOf="@id/title_mantenimiento" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</ScrollView>
