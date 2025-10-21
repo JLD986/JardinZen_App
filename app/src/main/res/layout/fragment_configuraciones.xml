@@ -58,6 +58,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ajuste_humedad"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -85,6 +86,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/config_alert"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
