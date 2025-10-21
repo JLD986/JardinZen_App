@@ -190,56 +190,21 @@
 
             </LinearLayout>
 
-            <TextView
+            <Button
+                android:id="@+id/btn_cerrar_sesion"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Opciones"
-                android:fontFamily="@font/comfortaa"
+                android:layout_height="60dp"
+                android:text="@string/cerrar_sesion"
+                android:backgroundTint="@color/verde_target"
+                app:strokeColor="@color/verde_fuente2"
+                app:strokeWidth="2dp"
                 android:textStyle="bold"
                 android:textColor="@color/verde_fuente"
-                android:layout_marginTop="30dp"
-                android:layout_marginStart="20dp"
-                android:textSize="24sp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp"
-                android:layout_marginHorizontal="20dp"
-                android:gravity="center_horizontal">
-
-
-                <Button
-                    android:id="@+id/btn_cambiar_contrasena"
-                    android:layout_width="140dp"
-                    android:layout_height="60dp"
-                    android:text="@string/cambiar_contrasena"
-                    android:backgroundTint="@color/verde_boton"
-                    app:strokeColor="@color/verde_fuente2"
-                    app:strokeWidth="2dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/verde_fuente"
-                    android:fontFamily="@font/comfortaa"
-                    android:paddingHorizontal="10dp"
-                    android:textSize="16sp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="15dp"/>
-
-                <Button
-                    android:id="@+id/btn_cerrar_sesion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:text="@string/cerrar_sesion"
-                    android:backgroundTint="@color/verde_boton"
-                    app:strokeColor="@color/verde_fuente2"
-                    app:strokeWidth="2dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/verde_fuente"
-                    android:fontFamily="@font/comfortaa"
-                    android:paddingHorizontal="10dp"
-                    android:textSize="16sp"/>
-            </LinearLayout>
+                android:fontFamily="@font/comfortaa"
+                android:paddingHorizontal="10dp"
+                android:textSize="16sp"/>
 
         </LinearLayout>
 
