@@ -16,16 +16,16 @@
 
         <ImageView
             android:id="@+id/imagen_planta"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/planta"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:src="@drawable/hortensia"
             android:layout_marginTop="20dp"/>
 
         <TextView
             android:id="@+id/nombre_planta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pensamiento"
+            android:text="Hortensia"
             android:fontFamily="@font/comfortaa"
             android:textColor="@color/verde_fuente"
             android:textSize="34sp"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/temperatura"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textColor="@color/verde_oscuro"
                     android:fontFamily="@font/comfortaa"/>
 
@@ -82,6 +82,7 @@
                     android:textColor="@color/verde_fuente2"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/comfortaa"/>
             </LinearLayout>
 
@@ -105,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/humedad_suelo"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textColor="@color/verde_oscuro"
                     android:fontFamily="@font/comfortaa"/>
 
@@ -140,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/nivel_luz"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textColor="@color/verde_oscuro"
                     android:fontFamily="@font/comfortaa"/>
 
@@ -175,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/nivel_agua"
                     android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textColor="@color/verde_oscuro"
                     android:fontFamily="@font/comfortaa"/>
 
@@ -198,7 +199,7 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/card_border"
             android:padding="16dp"
-            android:text="@string/consejos_planta"
+            android:text="@string/txt_consejos_planta"
             android:textStyle="bold"
             android:textColor="@color/verde_fuente"
             android:fontFamily="@font/comfortaa"
