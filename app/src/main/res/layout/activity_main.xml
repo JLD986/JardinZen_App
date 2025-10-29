@@ -53,6 +53,7 @@
         android:background="@color/verde_oscuro"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
+
     <!--barra de navegacion-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNV"
@@ -61,7 +62,8 @@
         android:layout_alignParentBottom="true"
         android:background="@color/verde_claro"
         app:menu="@menu/nav_menu"
-        app:itemIconSize="25dp"/>
+        app:itemIconSize="25dp"
+        app:itemTextColor="@color/negro"/>
 
 
 </RelativeLayout>
