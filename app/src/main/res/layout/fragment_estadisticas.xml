@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentEstadisticas">
 
@@ -23,25 +23,173 @@
                 android:textStyle="bold"
                 android:textColor="@color/verde_fuente"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:textSize="40sp"
                 android:layout_marginBottom="20dp"
                 android:layout_width="260dp"
                 android:layout_height="60dp"/>
 
+            <!-- Gráfica Humedad -->
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:background="@drawable/card_border"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
 
-            <!-- Tarjeta 1: Humedad -->
-            <include layout="@layout/grafica_humedad"/>
+                <TextView
+                    android:text="Humedad del Suelo"
+                    android:textAlignment="center"
+                    android:textColor="@color/verde_oscuro"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <!-- Tarjeta 2: Temperatura -->
-            <include layout="@layout/grafica_temperatura"/>
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chartHumedad"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
 
-            <!-- Tarjeta 3: Nivel de Luz -->
-            <include layout="@layout/grafica_luz"/>
+            </LinearLayout>
 
-            <!-- Tarjeta 4: Historial General -->
-            <include layout="@layout/item_historial_general"/>
+            <!-- Gráfica Temperatura -->
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:background="@drawable/card_border"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
 
+                <TextView
+                    android:text="Temperatura"
+                    android:textAlignment="center"
+                    android:textColor="@color/verde_oscuro"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chartTemperatura"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
+
+            <!-- Gráfica Luz -->
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:background="@drawable/card_border"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:text="Nivel de Luz"
+                    android:textAlignment="center"
+                    android:textColor="@color/verde_oscuro"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chartLuz"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
+
+            <!-- Historial General -->
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:background="@drawable/card_border"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Historial General"
+                    android:textStyle="bold"
+                    android:textColor="@color/verde_oscuro"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Encabezados -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="@drawable/blanco_redondeado">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_oscuro"
+                        android:fontFamily="@font/comfortaa"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Temp"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_oscuro"
+                        android:fontFamily="@font/comfortaa"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Humedad"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_oscuro"
+                        android:fontFamily="@font/comfortaa"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Luz"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde_oscuro"
+                        android:fontFamily="@font/comfortaa"/>
+
+                </LinearLayout>
+
+                <!-- RecyclerView para los registros -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerHistorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/blanco_redondeado"
+                    android:padding="8dp"
+                    tools:listitem="@layout/registro_historial"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
