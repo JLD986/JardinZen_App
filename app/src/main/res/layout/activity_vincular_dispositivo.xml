@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/beige_claro">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:textColor="@color/negro"
+        >
+
+        <TextView
+            android:text="Vincula tu ESP32"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/verde_fuente"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <EditText
+            android:id="@+id/txtSsid"
+            android:hint="Nombre de la red WiFi (SSID)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/negro"
+            android:textColorHint="@color/cardview_dark_background"/>
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:hint="Contraseña WiFi"
+            android:textColorHint="@color/cardview_dark_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/negro" />
+
+        <EditText
+            android:id="@+id/txtCorreo"
+            android:hint="Correo de usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/negro"
+            android:textColorHint="@color/cardview_dark_background"/>
+
+
+        <Button
+            android:id="@+id/btnBuscar"
+            android:text="Buscar dispositivos Bluetooth "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/verde_oscuro"
+            android:textColor="@color/blanco"
+            android:layout_marginTop="20dp" />
+
+        <ListView
+            android:id="@+id/listViewDevices"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/negro"
+            android:dividerHeight="1dp"
+            android:divider="@color/negro"
+            />
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:text="Enviar datos al ESP32 ...📨 "
+            android:backgroundTint="@color/verde_oscuro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/blanco"/>
+
+    </LinearLayout>
+</FrameLayout>
