@@ -34,11 +34,11 @@
                 <!--imagen de la planta-->
                 <ImageView
                     android:id="@+id/imagen_planta"
-                    android:src="@drawable/planta"
-                    android:layout_marginBottom="4dp"
                     android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:contentDescription="@string/nombre_planta"/>
+                    android:layout_height="102dp"
+                    android:layout_marginBottom="4dp"
+                    android:contentDescription="@string/nombre_planta"
+                    android:src="@drawable/hortensia" />
 
                 <!--nombre de la planta-->
                 <TextView
@@ -202,7 +202,9 @@
                     android:textStyle="bold"
                     android:layout_marginLeft="65dp"
                     android:layout_width="130dp"
-                    android:layout_height="48dp"/>
+                    android:layout_height="48dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
             </LinearLayout>
 
