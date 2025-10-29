@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.locochones.jardnzen_app.MainActivity
+
+
 import com.locochones.jardnzen_app.R
 import com.locochones.jardnzen_app.databinding.ActivityRegistroBinding
 
@@ -36,7 +38,7 @@ class RegistroActivity : AppCompatActivity() {
         // Instancia de FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
         progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Por favor espere")
+        progressDialog.setTitle("Registrando Usuario")
         progressDialog.setCanceledOnTouchOutside(false)
 
         //Evento del botón de registro
@@ -56,7 +58,7 @@ class RegistroActivity : AppCompatActivity() {
     private var nombre = ""
     private var correo = ""
     private var contrasena = ""
-    private var confirmarContrasena = ""
+
 
     private fun validarDatos() {
         nombre = binding.etNombreusuario.text.toString().trim()
@@ -122,8 +124,13 @@ class RegistroActivity : AppCompatActivity() {
             .setValue(datosUsuario)
             .addOnSuccessListener {
                 progressDialog.dismiss()
+
+                val session = SessionManager(this)
+                session.saveCredentials(correo, contrasena)
+
+
                 Toast.makeText(this, "Cuenta creada con éxito", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, VincularDispositivoActivity::class.java))
                 finish()
             }
             .addOnFailureListener { e ->
