@@ -20,6 +20,7 @@ class FragmentInicio : Fragment() {
     private lateinit var databaseSensores: DatabaseReference
     private lateinit var adapter: PlantaAdapter
     private val listaPlantas = mutableListOf<Planta>()
+    private val deviceId = "JardinZenESP32" // IP ESP32
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,45 +31,41 @@ class FragmentInicio : Fragment() {
         // Inicializar Firebase
         auth = FirebaseAuth.getInstance()
         databaseUsuarios = FirebaseDatabase.getInstance().getReference("Usuarios")
-        databaseSensores = FirebaseDatabase.getInstance().getReference("sensores")
 
         // Configurar RecyclerView
         binding.recyclerJardin.layoutManager = LinearLayoutManager(requireContext())
         adapter = PlantaAdapter(listaPlantas)
         binding.recyclerJardin.adapter = adapter
 
-        // Mostrar nombre del usuario
+        // Aca se muestra el nombre del usuario y cargamos los datos de los sensores
         val user = auth.currentUser
         if (user != null) {
             obtenerNombreUsuario(user.uid)
+            obtenerDatosSensores(user.uid)
         } else {
             binding.holaUsuario.text = "Hola ????"
         }
-
-        // Cargar datos de sensores
-        obtenerDatosSensores()
 
         return binding.root
     }
 
     private fun obtenerNombreUsuario(uid: String) {
         databaseUsuarios.child(uid).get().addOnSuccessListener { snapshot ->
-            if (snapshot.exists()) {
-                val nombre = snapshot.child("nombre").value?.toString()
-                if (!nombre.isNullOrEmpty()) {
-                    binding.holaUsuario.text = "Hola $nombre"
-                } else {
-                    binding.holaUsuario.text = "Hola ????"
-                }
-            } else {
-                binding.holaUsuario.text = "Hola ????"
-            }
+            val nombre = snapshot.child("nombre").value?.toString()
+            binding.holaUsuario.text = if (!nombre.isNullOrEmpty()) "Hola $nombre" else "Hola ????"
         }.addOnFailureListener {
             binding.holaUsuario.text = "Hola ????"
         }
     }
 
-    private fun obtenerDatosSensores() {
+    private fun obtenerDatosSensores(uid: String) {
+        databaseSensores = FirebaseDatabase.getInstance()
+            .getReference("Usuarios")
+            .child(uid)
+            .child("dispositivos")
+            .child(deviceId)
+            .child("sensores")
+
         databaseSensores.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 listaPlantas.clear()
@@ -76,15 +73,15 @@ class FragmentInicio : Fragment() {
                 val temperatura = snapshot.child("temperatura").getValue(Double::class.java)
                 val humedad = snapshot.child("humedad_suelo").getValue(Int::class.java)
                 val luz = snapshot.child("luz").getValue(Int::class.java)
-                val agua = snapshot.child("distancia_agua").getValue(Double::class.java)
+                val agua = snapshot.child("nivel_agua").getValue(Double::class.java)
 
                 val planta = Planta(
-                    nombre = "Mi planta 🌱",
+                    nombre = " Hortensia 🌱",
                     temperatura = "${temperatura ?: 0.0} °C",
                     humedad = "${humedad ?: 0} %",
                     luz = "${luz ?: 0} %",
                     agua = "${agua ?: 0.0} cm",
-                    imagenUrl = "" // puedes agregar una URL si quieres mostrar imagen
+                    imagenUrl = ""
                 )
 
                 listaPlantas.add(planta)
@@ -92,7 +89,7 @@ class FragmentInicio : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                println("❌ Error Firebase: ${error.message}")
+                println(" Error en Firebase: ${error.message}")
             }
         })
     }
