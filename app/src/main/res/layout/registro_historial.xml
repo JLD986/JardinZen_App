@@ -1,49 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="12dp"
+    android:background="?android:attr/selectableItemBackground">
 
     <TextView
-        android:id="@+id/tvFecha"
+        android:id="@+id/txtFecha"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="15 Oct"
-        android:textStyle="bold"
-        android:textColor="@color/verde_oscuro"
-        android:fontFamily="@font/comfortaa"/>
+        android:text="01/01 12:00"
+        android:textColor="@color/verde_fuente"
+        android:fontFamily="@font/comfortaa"
+        android:textSize="14sp"/>
 
     <TextView
-        android:id="@+id/tvTemperatura"
+        android:id="@+id/txtTemperatura"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="25°C"
-        android:textStyle="bold"
-        android:textColor="@color/verde_oscuro"
-        android:fontFamily="@font/comfortaa"/>
+        android:text="25.0°C"
+        android:textColor="@color/verde_fuente"
+        android:fontFamily="@font/comfortaa"
+        android:textSize="14sp"
+        android:textAlignment="center"/>
 
     <TextView
-        android:id="@+id/tvHumedad"
+        android:id="@+id/txtHumedad"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="60%"
-        android:textStyle="bold"
-        android:textColor="@color/verde_oscuro"
-        android:fontFamily="@font/comfortaa"/>
+        android:text="65%"
+        android:textColor="@color/verde_fuente"
+        android:fontFamily="@font/comfortaa"
+        android:textSize="14sp"
+        android:textAlignment="center"/>
 
     <TextView
-        android:id="@+id/tvLuz"
+        android:id="@+id/txtLuz"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="350 lux"
-        android:textStyle="bold"
-        android:textColor="@color/verde_oscuro"
-        android:fontFamily="@font/comfortaa"/>
+        android:text="80%"
+        android:textColor="@color/verde_fuente"
+        android:fontFamily="@font/comfortaa"
+        android:textSize="14sp"
+        android:textAlignment="center"/>
 
 </LinearLayout>
