@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.jardnzen_app.Fragmentos.FragmentPlanta
 import com.example.jardnzen_app.Modelos.Planta
 import com.locochones.jardnzen_app.R
 
@@ -40,17 +42,32 @@ class PlantaAdapter(
         holder.datoLuz.text = planta.luz
         holder.datoAgua.text = planta.agua
 
-        // Cargar imagen con Glide (asegúrate de tenerlo en tu Gradle)
+        // Cargar imagen con Glide
         if (planta.imagenUrl.isNotEmpty()) {
             Glide.with(holder.itemView.context)
                 .load(planta.imagenUrl)
                 .placeholder(R.drawable.planta)
                 .into(holder.imagenPlanta)
+        } else {
+            holder.imagenPlanta.setImageResource(R.drawable.hortensia)
         }
 
+        // Configuraracion de el clic del botón "Ver más"
         holder.botonVerMas.setOnClickListener {
-            // Aquí puedes agregar una acción, por ejemplo abrir un detalle
+            navegarAFragmentPlanta(holder.itemView.context as FragmentActivity, planta)
         }
+
+    }
+
+    private fun navegarAFragmentPlanta(activity: FragmentActivity, planta: Planta) {
+        // Crear instancia del FragmentPlanta con los datos de la planta
+        val fragmentPlanta = FragmentPlanta.newInstance(planta)
+
+        // Aca realizamos el cambio entre fragmentos usando fragmentoFL
+        activity.supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentoFL, fragmentPlanta)
+            .addToBackStack("inicio") // para devolvernos al fragmento anterior
+            .commit()
     }
 
     override fun getItemCount(): Int = listaPlantas.size
