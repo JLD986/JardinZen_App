@@ -1,11 +1,14 @@
 <resources>
     <!-- Strings generales de la aplicación -->
     <string name="app_name">Jardín Zen</string>
-    <string name="hola_usuario">Hola, %1$s</string>
+    <string name="hola_usuario">Hola, </string>
     <string name="mi_jardin">Mi Jardín</string>
     <string name="ver_mas">Ver más</string>
     <string name="volver">Volver</string>
     <string name="guardar_cambios">Guardar cambios</string>
+
+    <!-- Conexion a bluetooh -->
+
 
     <!-- Strings de Login -->
     <string name="txt_ingresar">Ingresar</string>
@@ -35,7 +38,7 @@
     <!-- Strings de Perfil -->
     <string name="mi_perfil">Mi Perfil</string>
     <string name="plantas_registradas">Plantas registradas: %1$d</string>
-    <string name="dispositivo_iot_vinculado">Dispositivo IoT vinculado: %1$s</string>
+    <string name="txt_dispositivo_iot_vinculado">Dispositivo IoT vinculado: %1$s</string>
     <string name="notificaciones_activadas">Notificaciones: %1$s</string>
     <string name="modo_riego">Modo de riego: %1$s</string>
     <string name="editor_perfil">Editar perfil</string>
@@ -49,7 +52,7 @@
     <string name="humedad_suelo">Humedad del suelo</string>
     <string name="nivel_luz">Nivel de luz</string>
     <string name="nivel_agua">Nivel de agua</string>
-    <string name="consejos_planta">%1$s</string>
+    <string name="txt_consejos_planta">La hortensia necesita tierra rica y húmeda, luz indirecta, riego frecuente sin encharcar, poda tras la floración y fertilizante en primavera para florecer bien.</string>
     <string name="btn_riego_automatico">Riego automático %1$s</string>
     <string name="regar">Regar</string>
     <string name="btn_detener_riego">Detener riego</string>
