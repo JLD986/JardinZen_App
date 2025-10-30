@@ -115,4 +115,12 @@
     <string name="txt_mnsj_cerrar_sesion">¿Estás seguro que deseas cerrar sesión?</string>
     <string name="btn_no">No</string>
     <string name="btn_si">Sí</string>
+
+    <!--vinculacion-->
+    <string name="vincular">Vincula tu ESP32</string>
+    <string name="nombre_red_wifi">Nombre de la red WiFi (SSID)</string>
+    <string name="contrasena_red_wifi">Contraseña WiFi</string>
+    <string name="correo_usuario">Correo de usuario</string>
+    <string name="buscar_dispositivos_bluetooth">Buscar dispositivos Bluetooth</string>
+    <string name="enviando_datos">Enviar datos al ESP32 ...📨</string>
 </resources>

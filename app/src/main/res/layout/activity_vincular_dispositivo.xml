@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="30dp"
     android:background="@color/beige_claro">
 
     <LinearLayout
@@ -16,52 +16,70 @@
         >
 
         <TextView
-            android:text="Vincula tu ESP32"
+            android:text="@string/vincular"
             android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="@color/verde_fuente"
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"/>
 
 
-        <EditText
-            android:id="@+id/txtSsid"
-            android:hint="Nombre de la red WiFi (SSID)"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textColor="@color/negro"
-            android:textColorHint="@color/cardview_dark_background"/>
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/txtPassword"
-            android:hint="Contraseña WiFi"
-            android:textColorHint="@color/cardview_dark_background"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/negro" />
+            <EditText
+                android:id="@+id/txtSsid"
+                android:hint="@string/nombre_red_wifi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/negro"
+                android:textColorHint="@color/cardview_dark_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/txtCorreo"
-            android:hint="Correo de usuario"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/negro"
-            android:textColorHint="@color/cardview_dark_background"/>
+            app:passwordToggleEnabled="true"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/txtPassword"
+                android:hint="@string/contrasena_red_wifi"
+                android:textColorHint="@color/cardview_dark_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/negro" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/txtCorreo"
+                android:hint="@string/correo_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/negro"
+                android:textColorHint="@color/cardview_dark_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
             android:id="@+id/btnBuscar"
-            android:text="Buscar dispositivos Bluetooth "
+            android:text="@string/buscar_dispositivos_bluetooth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/verde_oscuro"
             android:textColor="@color/blanco"
+            android:textSize="16sp"
             android:layout_marginTop="20dp" />
 
         <ListView
@@ -76,11 +94,12 @@
 
         <Button
             android:id="@+id/btnEnviar"
-            android:text="Enviar datos al ESP32 ...📨 "
+            android:text="@string/enviando_datos"
             android:backgroundTint="@color/verde_oscuro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textSize="16sp"
             android:textColor="@color/blanco"/>
 
     </LinearLayout>
