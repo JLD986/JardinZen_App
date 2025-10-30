@@ -5,15 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.jardnzen_app.Modelos.Planta
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.locochones.jardnzen_app.R
 import com.locochones.jardnzen_app.databinding.FragmentPlantaBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class FragmentPlanta : Fragment() {
 
@@ -57,13 +56,8 @@ class FragmentPlanta : Fragment() {
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("Usuarios")
 
-        // Configurar datos de la planta
         configurarDatosPlanta()
-
-        // Configurar listeners de botones
         configurarBotones()
-
-        // Cargar datos en tiempo real desde Firebase
         cargarDatosTiempoReal()
     }
 
@@ -75,13 +69,11 @@ class FragmentPlanta : Fragment() {
             binding.valorLuz.text = it.luz
             binding.valorAgua.text = it.agua
 
-            // Configurar estado según los valores
             configurarEstadoPlanta(it)
         }
     }
 
     private fun configurarEstadoPlanta(planta: Planta) {
-        // Extraer valores numéricos para determinar el estado
         val humedad = extraerValorNumerico(planta.humedad)
         val temperatura = extraerValorNumerico(planta.temperatura)
 
@@ -94,7 +86,6 @@ class FragmentPlanta : Fragment() {
 
         binding.estadoPlanta.text = "Estado: $estado"
 
-        // Configurar color según estado
         when {
             humedad < 30 -> binding.estadoPlanta.setTextColor(Color.parseColor("#FF6B6B"))
             temperatura > 35 || temperatura < 10 -> binding.estadoPlanta.setTextColor(Color.parseColor("#FFA726"))
@@ -103,138 +94,170 @@ class FragmentPlanta : Fragment() {
     }
 
     private fun extraerValorNumerico(texto: String): Int {
-        return try {
-            texto.replace("[^0-9]".toRegex(), "").toIntOrNull() ?: 0
-        } catch (e: Exception) {
-            0
-        }
+        return texto.replace("[^0-9]".toRegex(), "").toIntOrNull() ?: 0
     }
 
     private fun configurarBotones() {
-        // Botón Regar
         binding.btnRegar.setOnClickListener {
             activarRiegoManual()
         }
 
-        // Botón Detener Riego
         binding.btnDetenerRiego.setOnClickListener {
             detenerRiegoManual()
         }
 
-        // Actualizar estado inicial de los botones
         actualizarEstadoBotones()
     }
 
     private fun activarRiegoManual() {
-        val user = auth.currentUser
-        user?.let { uid ->
-            database.child(uid.uid).child("dispositivos").child(deviceId).child("control")
-                .child("riego_manual").setValue(true)
-                .addOnSuccessListener {
-                    binding.riegoStatus.text = "Riego manual ACTIVADO "
-                    binding.riegoStatus.setTextColor(Color.parseColor("#4CAF50"))
-                    actualizarEstadoBotones()
-                    actualizarUltimoRiego()
-                }
-                .addOnFailureListener {
-                    binding.riegoStatus.text = "Error activando riego "
-                    binding.riegoStatus.setTextColor(Color.parseColor("#FF6B6B"))
-                }
-        }
+        val user = auth.currentUser ?: return
+        val uid = user.uid
+
+        val controlRef = database.child(uid).child("dispositivos").child(deviceId).child("control")
+        val fechaHora = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date())
+
+        val updates = mapOf(
+            "riego_manual" to true,
+            "ultimo_riego" to fechaHora
+        )
+
+        controlRef.updateChildren(updates)
+            .addOnSuccessListener {
+                binding.riegoStatus.text = "Riego manual 'ACTIVADO'"
+                binding.riegoStatus.setTextColor(Color.parseColor("#4CAF50"))
+                binding.ultimoRiego.text = "Último riego: $fechaHora"
+                actualizarEstadoBotones()
+            }
+            .addOnFailureListener {
+                binding.riegoStatus.text = "Error activando riego"
+                binding.riegoStatus.setTextColor(Color.parseColor("#FF6B6B"))
+            }
     }
 
     private fun detenerRiegoManual() {
-        val user = auth.currentUser
-        user?.let { uid ->
-            database.child(uid.uid).child("dispositivos").child(deviceId).child("control")
-                .child("riego_manual").setValue(false)
-                .addOnSuccessListener {
-                    binding.riegoStatus.text = "Riego manual DESACTIVADO "
-                    binding.riegoStatus.setTextColor(Color.parseColor("#FFA726"))
-                    actualizarEstadoBotones()
-                }
-                .addOnFailureListener {
-                    binding.riegoStatus.text = "Error deteniendo riego "
-                    binding.riegoStatus.setTextColor(Color.parseColor("#FF6B6B"))
-                }
-        }
+        val user = auth.currentUser ?: return
+        val uid = user.uid
+
+        val controlRef = database.child(uid).child("dispositivos").child(deviceId).child("control")
+
+        controlRef.child("riego_manual").setValue(false)
+            .addOnSuccessListener {
+                binding.riegoStatus.text = "Riego manual 'DESACTIVADO'"
+                binding.riegoStatus.setTextColor(Color.parseColor("#FFA726"))
+                actualizarEstadoBotones()
+            }
+            .addOnFailureListener {
+                binding.riegoStatus.text = "Error deteniendo riego"
+                binding.riegoStatus.setTextColor(Color.parseColor("#FF6B6B"))
+            }
     }
 
     private fun actualizarEstadoBotones() {
-        // Esta función podría leer el estado actual desde Firebase
-        // Por ahora, solo actualiza la visibilidad básica
-        binding.btnRegar.isEnabled = true
-        binding.btnDetenerRiego.isEnabled = true
-    }
+        val user = auth.currentUser ?: return
+        val uid = user.uid
 
-    private fun actualizarUltimoRiego() {
-        val fechaHora = java.text.SimpleDateFormat("dd/MM/yyyy HH:mm", java.util.Locale.getDefault())
-            .format(java.util.Date())
-        binding.ultimoRiego.text = "Último riego: $fechaHora"
+        database.child(uid).child("modoRiego").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val modo = snapshot.getValue(String::class.java) ?: "Automatico"
+                val esManual = modo.equals("Manual", ignoreCase = true)
+
+                binding.btnRegar.isEnabled = esManual
+                binding.btnDetenerRiego.isEnabled = esManual
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     private fun cargarDatosTiempoReal() {
-        val user = auth.currentUser
-        user?.let { uid ->
-            val sensoresRef = database.child(uid.uid).child("dispositivos").child(deviceId).child("sensores")
+        val user = auth.currentUser ?: return
+        val uid = user.uid
 
-            sensoresRef.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        val temperatura = snapshot.child("temperatura").getValue(Double::class.java) ?: 0.0
-                        val humedad = snapshot.child("humedad_suelo").getValue(Int::class.java) ?: 0
-                        val luz = snapshot.child("luz").getValue(Int::class.java) ?: 0
-                        val agua = snapshot.child("nivel_agua").getValue(Double::class.java) ?: 0.0
-                        val humedadAire = snapshot.child("humedad_aire").getValue(Double::class.java) ?: 0.0
+        // Leer sensores
+        val sensoresRef = database.child(uid).child("dispositivos").child(deviceId).child("sensores")
+        sensoresRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (!snapshot.exists()) return
 
-                        // Actualizar UI con datos en tiempo real
-                        binding.valorTemperatura.text = "$temperatura °C"
-                        binding.valorHumedadSuelo.text = "$humedad%"
-                        binding.valorLuz.text = "$luz%"
-                        binding.valorAgua.text = "$agua cm"
+                val temperatura = snapshot.child("temperatura").getValue(Double::class.java) ?: 0.0
+                val humedad = snapshot.child("humedad_suelo").getValue(Int::class.java) ?: 0
+                val luz = snapshot.child("luz").getValue(Int::class.java) ?: 0
+                val agua = snapshot.child("nivel_agua").getValue(Double::class.java) ?: 0.0
 
-                        // Actualizar estado
-                        val plantaActualizada = Planta(
-                            nombre = planta?.nombre ?: "Mi planta 🌱",
-                            temperatura = "$temperatura °C",
-                            humedad = "$humedad%",
-                            luz = "$luz%",
-                            agua = "$agua cm",
-                            imagenUrl = ""
-                        )
-                        configurarEstadoPlanta(plantaActualizada)
+                binding.valorTemperatura.text = "$temperatura °C"
+                binding.valorHumedadSuelo.text = "$humedad%"
+                binding.valorLuz.text = "$luz%"
+                binding.valorAgua.text = "$agua cm"
 
-                        // Verificar si está regando actualmente
-                        verificarEstadoRiego(uid.uid)
-                    }
+                val plantaActualizada = Planta(
+                    nombre = planta?.nombre ?: "Mi planta 🌱",
+                    temperatura = "$temperatura °C",
+                    humedad = "$humedad%",
+                    luz = "$luz%",
+                    agua = "$agua cm",
+                    imagenUrl = ""
+                )
+                configurarEstadoPlanta(plantaActualizada)
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        // Leer control y último riego
+        val controlRef = database.child(uid).child("dispositivos").child(deviceId).child("control")
+        controlRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val riegoManual = snapshot.child("riego_manual").getValue(Boolean::class.java) ?: false
+                val ultimoRiego = snapshot.child("ultimo_riego").getValue(String::class.java) ?: ""
+
+                if (ultimoRiego.isNotEmpty()) {
+                    binding.ultimoRiego.text = "Último riego: $ultimoRiego"
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-                    // Manejar error
-                }
-            })
-        }
+                actualizarEstadoRiego(uid, riegoManual)
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        // Leer modoRiego
+        val modoRef = database.child(uid).child("modoRiego")
+        modoRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val modo = snapshot.getValue(String::class.java) ?: "Automatico"
+                val esManual = modo.equals("Manual", ignoreCase = true)
+                binding.btnRegar.isEnabled = esManual
+                binding.btnDetenerRiego.isEnabled = esManual
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
-    private fun verificarEstadoRiego(uid: String) {
+    private fun actualizarEstadoRiego(uid: String, riegoManual: Boolean) {
         val estadoRef = database.child(uid).child("dispositivos").child(deviceId).child("estado")
-
         estadoRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val regando = snapshot.child("regando").getValue(Boolean::class.java) ?: false
 
-                if (regando) {
-                    binding.riegoStatus.text = "Riego automático ACTIVADO "
-                    binding.riegoStatus.setTextColor(Color.parseColor("#4CAF50"))
-                } else {
-                    binding.riegoStatus.text = "Riego automático listo "
-                    binding.riegoStatus.setTextColor(Color.parseColor("#757575"))
+                database.child(uid).child("modoRiego").get().addOnSuccessListener { modoSnap ->
+                    val modo = modoSnap.getValue(String::class.java) ?: "Automatico"
+                    val esManual = modo.equals("Manual", ignoreCase = true)
+
+                    if (esManual && riegoManual) {
+                        binding.riegoStatus.text = "Riego manual 'ACTIVADO'"
+                        binding.riegoStatus.setTextColor(Color.parseColor("#4CAF50"))
+                    } else if (!esManual && regando) {
+                        binding.riegoStatus.text = "Riego automático 'ACTIVADO'"
+                        binding.riegoStatus.setTextColor(Color.parseColor("#4CAF50"))
+                    } else {
+                        binding.riegoStatus.text = if (esManual) "Riego manual listo" else "Riego automático listo"
+                        binding.riegoStatus.setTextColor(Color.parseColor("#757575"))
+                    }
                 }
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                // Manejar error
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
     }
 }
