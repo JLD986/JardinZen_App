@@ -53,6 +53,7 @@ class FragmentPerfil : Fragment() {
             obtenerDatosUsuario(uid)
             verificarDispositivoVinculado(uid)
             contarPlantasActivas(uid)
+            escucharModoRiego(uid)
         } else {
             nombreUsuario.text = "No hay sesión activa"
             correoUsuario.text = ""
@@ -73,12 +74,7 @@ class FragmentPerfil : Fragment() {
         database.child(uid).child("nombre")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        val nombre = snapshot.getValue(String::class.java)
-                        nombreUsuario.text = nombre ?: "Usuario"
-                    } else {
-                        nombreUsuario.text = "Usuario"
-                    }
+                    nombreUsuario.text = snapshot.getValue(String::class.java) ?: "Usuario"
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -91,11 +87,9 @@ class FragmentPerfil : Fragment() {
         database.child(uid).child("dispositivoIoT")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists() && snapshot.value.toString().isNotEmpty()) {
-                        infoDispositivo.text = "Sí" // Dispositivo vinculado
-                    } else {
-                        infoDispositivo.text = "No" // Sin dispositivo
-                    }
+                    infoDispositivo.text =
+                        if (snapshot.exists() && snapshot.value.toString().isNotEmpty()) "Sí"
+                        else "No"
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -105,16 +99,10 @@ class FragmentPerfil : Fragment() {
     }
 
     private fun contarPlantasActivas(uid: String) {
-        // Contar cuántas plantas están siendo monitoreadas (basado en los sensores activos)
         database.child(uid).child("dispositivos").child("JardinZenESP32").child("sensores")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        // Si hay datos de sensores, asumimos que hay al menos 1 planta activa
-                        plantasRegistradas.text = "1 planta"
-                    } else {
-                        plantasRegistradas.text = "0 plantas"
-                    }
+                    plantasRegistradas.text = if (snapshot.exists()) "1 planta" else "0 plantas"
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -124,37 +112,38 @@ class FragmentPerfil : Fragment() {
     }
 
     private fun setupClickListeners(view: View) {
-        // Tarjeta de dispositivo IoT - Vincular nuevo dispositivo
         view.findViewById<View>(R.id.card_dispositivo).setOnClickListener {
             val intent = Intent(requireContext(), VincularDispositivoActivity::class.java)
             startActivity(intent)
         }
 
-        // Tarjeta de notificaciones - Toggle simple
         view.findViewById<View>(R.id.card_notificaciones).setOnClickListener {
             toggleNotificaciones()
         }
 
-        // Tarjeta de modo riego - Cambiar modo
         view.findViewById<View>(R.id.card_modo_riego).setOnClickListener {
             cambiarModoRiego()
         }
     }
 
     private fun toggleNotificaciones() {
-        val user = auth.currentUser
-        user?.let { uid ->
-            database.child(uid.uid).child("notificaciones").addListenerForSingleValueEvent(object : ValueEventListener {
+        val user = auth.currentUser ?: return
+        val uid = user.uid
+
+        database.child(uid).child("notificaciones")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val estadoActual = snapshot.getValue(Boolean::class.java) ?: true
                     val nuevoEstado = !estadoActual
 
-                    database.child(uid.uid).child("notificaciones").setValue(nuevoEstado)
+                    database.child(uid).child("notificaciones").setValue(nuevoEstado)
                         .addOnSuccessListener {
                             notificacionesEstado.text = if (nuevoEstado) "Activadas ✅" else "Desactivadas ❌"
-                            Toast.makeText(requireContext(),
+                            Toast.makeText(
+                                requireContext(),
                                 if (nuevoEstado) "Notificaciones activadas" else "Notificaciones desactivadas",
-                                Toast.LENGTH_SHORT).show()
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                 }
 
@@ -162,32 +151,33 @@ class FragmentPerfil : Fragment() {
                     Toast.makeText(requireContext(), "Error al cambiar notificaciones", Toast.LENGTH_SHORT).show()
                 }
             })
-        }
+    }
+
+    private fun escucharModoRiego(uid: String) {
+        database.child(uid).child("modoRiego")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val modo = snapshot.getValue(String::class.java) ?: "Automático"
+                    modoRiego.text = modo
+                }
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
     }
 
     private fun cambiarModoRiego() {
-        val user = auth.currentUser
-        user?.let { uid ->
-            database.child(uid.uid).child("modoRiego").addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val modoActual = snapshot.getValue(String::class.java) ?: "Automático"
-                    val nuevoModo = when (modoActual) {
-                        "Automático" -> "Manual"
-                        "Manual" -> "Programado"
-                        else -> "Automático"
-                    }
+        val user = auth.currentUser ?: return
+        val uid = user.uid
 
-                    database.child(uid.uid).child("modoRiego").setValue(nuevoModo)
-                        .addOnSuccessListener {
-                            modoRiego.text = nuevoModo
-                            Toast.makeText(requireContext(), "Modo de riego: $nuevoModo", Toast.LENGTH_SHORT).show()
-                        }
-                }
+        database.child(uid).child("modoRiego").get().addOnSuccessListener { snapshot ->
+            val modoActual = snapshot.getValue(String::class.java) ?: "Automático"
+            val nuevoModo = if (modoActual == "Automático") "Manual" else "Automático"
 
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(requireContext(), "Error al cambiar modo", Toast.LENGTH_SHORT).show()
+            database.child(uid).child("modoRiego").setValue(nuevoModo)
+                .addOnSuccessListener {
+                    modoRiego.text = nuevoModo
+                    Toast.makeText(requireContext(), "Modo de riego: $nuevoModo", Toast.LENGTH_SHORT).show()
                 }
-            })
         }
     }
 
@@ -200,7 +190,6 @@ class FragmentPerfil : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        // Actualizar datos cuando el fragment se vuelve visible
         auth.currentUser?.let {
             obtenerDatosUsuario(it.uid)
             verificarDispositivoVinculado(it.uid)
