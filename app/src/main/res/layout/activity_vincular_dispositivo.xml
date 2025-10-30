@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:textColor="@color/negro"
         >
 
         <TextView
             android:text="@string/vincular"
             android:textSize="26sp"
             android:textStyle="bold"
+            android:fontFamily="@font/comfortaa"
             android:textColor="@color/verde_fuente"
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
@@ -27,48 +27,57 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/verde_fuente"
+            app:hintTextColor="@color/verde_fuente">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtSsid"
                 android:hint="@string/nombre_red_wifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/negro"
-                android:textColorHint="@color/cardview_dark_background"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            android:layout_marginTop="10dp">
-
-            <EditText
-                android:id="@+id/txtPassword"
-                android:hint="@string/contrasena_red_wifi"
-                android:textColorHint="@color/cardview_dark_background"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:fontFamily="@font/comfortaa"
                 android:textColor="@color/negro" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:boxStrokeColor="@color/verde_fuente"
+            app:hintTextColor="@color/verde_fuente"
             android:layout_marginTop="10dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPassword"
+                android:hint="@string/contrasena_red_wifi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/negro" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/verde_fuente"
+            app:hintTextColor="@color/verde_fuente"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtCorreo"
                 android:hint="@string/correo_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/negro"
-                android:textColorHint="@color/cardview_dark_background"/>
+                android:fontFamily="@font/comfortaa"
+                android:textColor="@color/negro" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -79,6 +88,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/verde_oscuro"
             android:textColor="@color/blanco"
+            android:fontFamily="@font/comfortaa"
+            android:textStyle="bold"
             android:textSize="16sp"
             android:layout_marginTop="20dp" />
 
@@ -87,9 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/negro"
             android:dividerHeight="1dp"
-            android:divider="@color/negro"
+            android:divider="@color/verde_fuente"
             />
 
         <Button
@@ -100,6 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/comfortaa"
             android:textColor="@color/blanco"/>
 
     </LinearLayout>
