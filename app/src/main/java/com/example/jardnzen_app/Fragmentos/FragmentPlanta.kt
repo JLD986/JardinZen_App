@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.example.jardnzen_app.Modelos.Planta
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.locochones.jardnzen_app.R
 import com.locochones.jardnzen_app.databinding.FragmentPlantaBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -74,27 +73,26 @@ class FragmentPlanta : Fragment() {
     }
 
     private fun configurarEstadoPlanta(planta: Planta) {
-        val humedad = extraerValorNumerico(planta.humedad)
-        val temperatura = extraerValorNumerico(planta.temperatura)
+        val humedad = planta.humedad.replace("[^0-9]".toRegex(), "").toIntOrNull() ?: 0
+        val temperatura = planta.temperatura.replace("[^0-9.]".toRegex(), "").toDoubleOrNull() ?: 0.0
+        val luz = planta.luz.replace("[^0-9]".toRegex(), "").toIntOrNull() ?: 0
 
         val estado = when {
             humedad < 30 -> "Necesita riego 💧"
             temperatura > 35 -> "Calor extremo 🔥"
             temperatura < 10 -> "Frío extremo ❄️"
+            luz > 70 -> "Mucha luz, mover a otro lugar ☀️"
             else -> "Saludable ✅"
         }
 
         binding.estadoPlanta.text = "Estado: $estado"
 
         when {
-            humedad < 30 -> binding.estadoPlanta.setTextColor(Color.parseColor("#FF6B6B"))
-            temperatura > 35 || temperatura < 10 -> binding.estadoPlanta.setTextColor(Color.parseColor("#FFA726"))
-            else -> binding.estadoPlanta.setTextColor(Color.parseColor("#4CAF50"))
+            humedad < 30 -> binding.estadoPlanta.setTextColor(Color.parseColor("#FF6B6B")) // rojo
+            temperatura > 35 || temperatura < 10 -> binding.estadoPlanta.setTextColor(Color.parseColor("#FFA726")) // naranja
+            luz > 70 -> binding.estadoPlanta.setTextColor(Color.parseColor("#FFB300")) // amarillo oscuro
+            else -> binding.estadoPlanta.setTextColor(Color.parseColor("#4CAF50")) // verde
         }
-    }
-
-    private fun extraerValorNumerico(texto: String): Int {
-        return texto.replace("[^0-9]".toRegex(), "").toIntOrNull() ?: 0
     }
 
     private fun configurarBotones() {
@@ -173,7 +171,7 @@ class FragmentPlanta : Fragment() {
         val user = auth.currentUser ?: return
         val uid = user.uid
 
-        // Leer sensores
+        // Sensores
         val sensoresRef = database.child(uid).child("dispositivos").child(deviceId).child("sensores")
         sensoresRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -182,19 +180,19 @@ class FragmentPlanta : Fragment() {
                 val temperatura = snapshot.child("temperatura").getValue(Double::class.java) ?: 0.0
                 val humedad = snapshot.child("humedad_suelo").getValue(Int::class.java) ?: 0
                 val luz = snapshot.child("luz").getValue(Int::class.java) ?: 0
-                val agua = snapshot.child("nivel_agua").getValue(Double::class.java) ?: 0.0
+                val agua = snapshot.child("nivel_pct").getValue(Double::class.java) ?: 0.0
 
                 binding.valorTemperatura.text = "$temperatura °C"
                 binding.valorHumedadSuelo.text = "$humedad%"
                 binding.valorLuz.text = "$luz%"
-                binding.valorAgua.text = "$agua cm"
+                binding.valorAgua.text = "$agua %"
 
                 val plantaActualizada = Planta(
                     nombre = planta?.nombre ?: "Mi planta 🌱",
                     temperatura = "$temperatura °C",
                     humedad = "$humedad%",
                     luz = "$luz%",
-                    agua = "$agua cm",
+                    agua = "$agua %",
                     imagenUrl = ""
                 )
                 configurarEstadoPlanta(plantaActualizada)
@@ -203,7 +201,7 @@ class FragmentPlanta : Fragment() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        // Leer control y último riego
+        // Control y último riego
         val controlRef = database.child(uid).child("dispositivos").child(deviceId).child("control")
         controlRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -220,7 +218,7 @@ class FragmentPlanta : Fragment() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        // Leer modoRiego
+        // modoRiego
         val modoRef = database.child(uid).child("modoRiego")
         modoRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
