@@ -73,14 +73,14 @@ class FragmentInicio : Fragment() {
                 val temperatura = snapshot.child("temperatura").getValue(Double::class.java)
                 val humedad = snapshot.child("humedad_suelo").getValue(Int::class.java)
                 val luz = snapshot.child("luz").getValue(Int::class.java)
-                val agua = snapshot.child("nivel_agua").getValue(Double::class.java)
+                val agua = snapshot.child("nivel_pct").getValue(Double::class.java)
 
                 val planta = Planta(
                     nombre = " Hortensia 🌱",
                     temperatura = "${temperatura ?: 0.0} °C",
                     humedad = "${humedad ?: 0} %",
                     luz = "${luz ?: 0} %",
-                    agua = "${agua ?: 0.0} cm",
+                    agua = "${agua ?: 0.0} %",
                     imagenUrl = ""
                 )
 
