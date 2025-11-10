@@ -13,11 +13,14 @@ import com.example.jardnzen_app.Fragmentos.FragmentPlanta
 import com.example.jardnzen_app.Modelos.Planta
 import com.locochones.jardnzen_app.R
 
+
+// Adaptador del RecyclerView que muestra una lista de plantas registradas, aun falta tener una logica que permita tener mas plantas registradas
 class PlantaAdapter(
     private val listaPlantas: List<Planta>
 ) : RecyclerView.Adapter<PlantaAdapter.PlantaViewHolder>() {
 
     inner class PlantaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        // Referencias a los elementos del layout target_planta.xml
         val imagenPlanta: ImageView = view.findViewById(R.id.imagen_planta)
         val nombrePlanta: TextView = view.findViewById(R.id.nombre_planta)
         val datoTemperatura: TextView = view.findViewById(R.id.dato_temperatura)
@@ -27,7 +30,10 @@ class PlantaAdapter(
         val botonVerMas: Button = view.findViewById(R.id.ver_mas)
     }
 
+    // Se ejecuta cuando el RecyclerView necesita crear un nuevo ViewHolder
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantaViewHolder {
+        // Inflar (crear) la vista desde el layout XML que define cómo se ve cada planta
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.target_planta, parent, false)
         return PlantaViewHolder(view)
@@ -35,6 +41,9 @@ class PlantaAdapter(
 
     override fun onBindViewHolder(holder: PlantaViewHolder, position: Int) {
         val planta = listaPlantas[position]
+
+
+        // Asignamos los datos de la planta a los TextView correspondientes
 
         holder.nombrePlanta.text = planta.nombre
         holder.datoTemperatura.text = planta.temperatura
