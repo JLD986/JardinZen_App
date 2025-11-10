@@ -16,7 +16,7 @@ import com.google.firebase.database.*
 import com.locochones.jardnzen_app.R
 
 class FragmentPerfil : Fragment() {
-
+    // Variables de Firebase y vistas
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var nombreUsuario: TextView
@@ -46,6 +46,7 @@ class FragmentPerfil : Fragment() {
         modoRiego = view.findViewById(R.id.txt_modo_riego)
         btnCerrarSesion = view.findViewById(R.id.btn_cerrar_sesion)
 
+        // Si hay usuario autenticado, cargar su información
         val user = auth.currentUser
         if (user != null) {
             correoUsuario.text = user.email ?: "Correo no disponible"
@@ -55,6 +56,7 @@ class FragmentPerfil : Fragment() {
             contarPlantasActivas(uid)
             escucharModoRiego(uid)
         } else {
+            // Si no hay sesión activa, mostrar mensaje por defecto
             nombreUsuario.text = "No hay sesión activa"
             correoUsuario.text = ""
             infoDispositivo.text = "Sin conexión a Firebase"
@@ -63,13 +65,14 @@ class FragmentPerfil : Fragment() {
         // Configurar clics en las tarjetas
         setupClickListeners(view)
 
+        // Acción del botón "Cerrar sesión"
         btnCerrarSesion.setOnClickListener {
             cerrarSesion()
         }
 
         return view
     }
-
+    // --- Carga el nombre del usuario desde Firebase ---
     private fun obtenerDatosUsuario(uid: String) {
         database.child(uid).child("nombre")
             .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -83,6 +86,7 @@ class FragmentPerfil : Fragment() {
             })
     }
 
+    // --- Verifica si el usuario tiene un dispositivo IoT vinculado ---
     private fun verificarDispositivoVinculado(uid: String) {
         database.child(uid).child("dispositivoIoT")
             .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -97,7 +101,7 @@ class FragmentPerfil : Fragment() {
                 }
             })
     }
-
+    // --- Cuenta cuántas plantas activas tiene el usuario, pero en este caso solo podemos manejar 1 ---
     private fun contarPlantasActivas(uid: String) {
         database.child(uid).child("dispositivos").child("JardinZenESP32").child("sensores")
             .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -110,22 +114,27 @@ class FragmentPerfil : Fragment() {
                 }
             })
     }
-
+    // --- Configura los clics de las tarjetas del perfil ---
     private fun setupClickListeners(view: View) {
         view.findViewById<View>(R.id.card_dispositivo).setOnClickListener {
             val intent = Intent(requireContext(), VincularDispositivoActivity::class.java)
             startActivity(intent)
         }
+        // Tarjeta para activar/desactivar notificaciones, no tiene una funcion real
 
         view.findViewById<View>(R.id.card_notificaciones).setOnClickListener {
             toggleNotificaciones()
         }
+
+        // Tarjeta para cambiar modo de riego, hay un boton en la seccion de configuracion, pero hemos trsladado la funcion aqui
 
         view.findViewById<View>(R.id.card_modo_riego).setOnClickListener {
             cambiarModoRiego()
         }
     }
 
+
+    // --- Alterna el estado de las notificaciones (ON/OFF), solo seria de agregar la funcionalidad ---
     private fun toggleNotificaciones() {
         val user = auth.currentUser ?: return
         val uid = user.uid
@@ -152,7 +161,7 @@ class FragmentPerfil : Fragment() {
                 }
             })
     }
-
+    // --- Escucha los cambios en el modo de riego (Automático / Manual) ---
     private fun escucharModoRiego(uid: String) {
         database.child(uid).child("modoRiego")
             .addValueEventListener(object : ValueEventListener {
@@ -164,7 +173,7 @@ class FragmentPerfil : Fragment() {
                 override fun onCancelled(error: DatabaseError) {}
             })
     }
-
+    // --- Cambia el modo de riego manualmente ---
     private fun cambiarModoRiego() {
         val user = auth.currentUser ?: return
         val uid = user.uid
@@ -180,14 +189,14 @@ class FragmentPerfil : Fragment() {
                 }
         }
     }
-
+    // --- Cierra la sesión del usuario ---
     private fun cerrarSesion() {
         auth.signOut()
         val intent = Intent(requireContext(), InicioSesionActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
-
+    // --- Cuando se vuelve al fragmento, refresca los datos ---
     override fun onResume() {
         super.onResume()
         auth.currentUser?.let {

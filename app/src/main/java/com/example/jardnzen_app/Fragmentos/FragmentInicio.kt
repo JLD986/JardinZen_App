@@ -14,13 +14,27 @@ import com.locochones.jardnzen_app.databinding.FragmentInicioBinding
 
 class FragmentInicio : Fragment() {
 
+    // ViewBinding para acceder fácilmente a los elementos del layout XML
     private lateinit var binding: FragmentInicioBinding
+
+    // Para la autenticación del usuario
     private lateinit var auth: FirebaseAuth
+
+    // Referencia a la base de datos de usuarios
     private lateinit var databaseUsuarios: DatabaseReference
+    // Referencia a la base de datos de sensores
     private lateinit var databaseSensores: DatabaseReference
+
+
+
+    // Adaptador del RecyclerView
     private lateinit var adapter: PlantaAdapter
+
+    // Lista que contendrá las plantas a mostrar
     private val listaPlantas = mutableListOf<Planta>()
-    private val deviceId = "JardinZenESP32" // IP ESP32
+
+    // ID del dispositivo en Firebase (ESP32)
+    private val deviceId = "JardinZenESP32"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +42,7 @@ class FragmentInicio : Fragment() {
     ): View {
         binding = FragmentInicioBinding.inflate(inflater, container, false)
 
-        // Inicializar Firebase
+        // Inicializa Firebase Authentication y la referencia a los usuarios
         auth = FirebaseAuth.getInstance()
         databaseUsuarios = FirebaseDatabase.getInstance().getReference("Usuarios")
 
@@ -59,6 +73,8 @@ class FragmentInicio : Fragment() {
     }
 
     private fun obtenerDatosSensores(uid: String) {
+
+        // Ruta completa hacia los sensores del usuario y su dispositivo
         databaseSensores = FirebaseDatabase.getInstance()
             .getReference("Usuarios")
             .child(uid)
@@ -66,14 +82,23 @@ class FragmentInicio : Fragment() {
             .child(deviceId)
             .child("sensores")
 
+        // Escucha en tiempo real los cambios en los valores de los sensores
+
         databaseSensores.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                // Limpia la lista anterior de plantas, pero como solo tenemos 1
+
                 listaPlantas.clear()
+
+                // Obtiene los valores de cada sensor desde Firebase
 
                 val temperatura = snapshot.child("temperatura").getValue(Double::class.java)
                 val humedad = snapshot.child("humedad_suelo").getValue(Int::class.java)
                 val luz = snapshot.child("luz").getValue(Int::class.java)
                 val agua = snapshot.child("nivel_pct").getValue(Double::class.java)
+
+                // Crea una instancia del modelo Planta con los datos actuales
 
                 val planta = Planta(
                     nombre = " Hortensia 🌱",
@@ -87,7 +112,7 @@ class FragmentInicio : Fragment() {
                 listaPlantas.add(planta)
                 adapter.notifyDataSetChanged()
             }
-
+            // Si ocurre un error al leer datos desde Firebase
             override fun onCancelled(error: DatabaseError) {
                 println(" Error en Firebase: ${error.message}")
             }

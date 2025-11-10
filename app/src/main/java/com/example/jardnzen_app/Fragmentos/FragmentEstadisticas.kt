@@ -195,7 +195,7 @@ class FragmentEstadisticas : Fragment() {
             override fun onCancelled(error: DatabaseError) {}
         })
     }
-
+    // Procesa los valores de cada sensor recibido desde Firebase
     private fun procesarDatosSensores(snapshot: DataSnapshot) {
         when (snapshot.key) {
             "humedad_suelo" -> {
@@ -212,14 +212,14 @@ class FragmentEstadisticas : Fragment() {
             }
         }
     }
-
+    // Añade los nuevos datos a las gráficas
     private fun actualizarGrafica(entries: ArrayList<Entry>, valor: Float,
                                   chart: com.github.mikephil.charting.charts.LineChart,
                                   label: String, color: Int) {
         // Incrementar contador
         dataCount++
 
-        // Limitar a maxDataPoints puntos
+        // Si hay más de 10 puntos, elimina el más viejo
         if (entries.size >= maxDataPoints) {
             entries.removeAt(0)
             // Reindexar los puntos restantes
@@ -246,6 +246,7 @@ class FragmentEstadisticas : Fragment() {
         }
     }
 
+    // Crea un nuevo registro para mostrar en el RecyclerView
     private fun agregarRegistroHistorial() {
         val fechaActual = SimpleDateFormat("dd/MM HH:mm", Locale.getDefault()).format(Date())
 
@@ -267,6 +268,7 @@ class FragmentEstadisticas : Fragment() {
         historialAdapter.notifyDataSetChanged()
     }
 
+    // Carga el historial guardado en Firebase
     private fun cargarHistorial(uid: String) {
         val historialRef = database.child(uid).child("historial")
 
