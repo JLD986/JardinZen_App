@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- Contenedor principal del fragmento de estadísticas.
+     Define el fondo general, el contexto del fragmento y el área donde se mostrará el contenido. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentEstadisticas">
 
+    <!-- ScrollView permite hacer scroll vertical si el contenido supera el tamaño de la pantalla. -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Contenedor principal que organiza todo el contenido del fragmento en orientación vertical. -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="5dp">
 
+            <!-- Título principal de la pantalla de estadísticas, con fuente personalizada y color verde. -->
             <TextView
                 android:id="@+id/estadistica"
                 android:text="@string/estadisticas"
@@ -29,7 +37,7 @@
                 android:layout_width="260dp"
                 android:layout_height="60dp"/>
 
-            <!-- Gráfica Humedad -->
+            <!-- Sección de la gráfica de humedad del suelo -->
             <LinearLayout
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
@@ -39,6 +47,7 @@
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
 
+                <!-- Título de la gráfica de humedad -->
                 <TextView
                     android:text="Humedad del Suelo"
                     android:textAlignment="center"
@@ -50,6 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
+                <!-- Gráfico lineal que mostrará la variación de la humedad del suelo a lo largo del tiempo -->
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/chartHumedad"
                     android:layout_width="match_parent"
@@ -57,7 +67,7 @@
 
             </LinearLayout>
 
-            <!-- Gráfica Temperatura -->
+            <!-- Sección de la gráfica de temperatura -->
             <LinearLayout
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
@@ -67,6 +77,7 @@
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
 
+                <!-- Título de la gráfica de temperatura -->
                 <TextView
                     android:text="Temperatura"
                     android:textAlignment="center"
@@ -78,6 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
+                <!-- Gráfico lineal para visualizar los cambios de temperatura en el tiempo -->
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/chartTemperatura"
                     android:layout_width="match_parent"
@@ -85,7 +97,7 @@
 
             </LinearLayout>
 
-            <!-- Gráfica Luz -->
+            <!-- Sección de la gráfica de nivel de luz -->
             <LinearLayout
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
@@ -95,6 +107,7 @@
                 android:padding="16dp"
                 android:layout_marginBottom="16dp">
 
+                <!-- Título de la gráfica de luz -->
                 <TextView
                     android:text="Nivel de Luz"
                     android:textAlignment="center"
@@ -106,6 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
+                <!-- Gráfico lineal para representar la intensidad de luz detectada -->
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/chartLuz"
                     android:layout_width="match_parent"
@@ -113,7 +127,7 @@
 
             </LinearLayout>
 
-            <!-- Historial General -->
+            <!-- Sección del historial general donde se muestran los registros de lecturas anteriores -->
             <LinearLayout
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
@@ -124,6 +138,7 @@
                 android:padding="16dp"
                 android:layout_marginBottom="24dp">
 
+                <!-- Título del historial general -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,7 +149,7 @@
                     android:fontFamily="@font/comfortaa"
                     android:layout_marginBottom="8dp"/>
 
-                <!-- Encabezados -->
+                <!-- Encabezados de las columnas del historial (Fecha, Temperatura, Humedad, Luz) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -180,7 +195,7 @@
 
                 </LinearLayout>
 
-                <!-- RecyclerView para los registros -->
+                <!-- RecyclerView que mostrará dinámicamente los registros del historial en formato de lista -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerHistorial"
                     android:layout_width="match_parent"

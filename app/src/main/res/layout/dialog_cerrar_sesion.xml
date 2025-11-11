@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Este layout define el diseño del cuadro de diálogo que aparece
+al solicitar la confirmación para cerrar sesión.
+Tiene un fondo decorativo, un mensaje principal y dos botones de acción.
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
@@ -7,6 +12,7 @@
     android:padding="24dp"
     android:background="@drawable/card_border">
 
+    <!-- Texto principal del diálogo -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,12 +25,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="24dp"/>
 
+    <!-- Contenedor para los botones de acción (Sí y No) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
 
+        <!-- Botón para cancelar el cierre de sesión -->
         <Button
             android:id="@+id/btn_dialogo_no"
             android:layout_width="wrap_content"
@@ -37,6 +45,7 @@
             android:fontFamily="@font/comfortaa"
             android:layout_marginEnd="40dp"/>
 
+        <!-- Botón para confirmar el cierre de sesión -->
         <Button
             android:id="@+id/btn_dialogo_si"
             android:layout_width="wrap_content"

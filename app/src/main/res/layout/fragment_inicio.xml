@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--
+Diseño del FragmentInicio: esta vista muestra un saludo al usuario y su jardín personal.
+Contiene un título principal, un subtítulo y una lista de plantas mostradas con un RecyclerView.
+-->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,12 +13,14 @@
     android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentInicio">
 
+    <!-- Contenedor principal con orientación vertical -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp">
 
+        <!-- Título principal que da la bienvenida al usuario -->
         <TextView
             android:id="@+id/hola_usuario"
             android:text="@string/hola_usuario"
@@ -24,6 +33,7 @@
             android:layout_width="250dp"
             android:layout_height="60dp"/>
 
+        <!-- Subtítulo que identifica la sección "Mi Jardín" -->
         <TextView
             android:id="@+id/mi_jardin"
             android:text="@string/mi_jardin"
@@ -36,6 +46,8 @@
             android:layout_width="160dp"
             android:layout_height="50dp"/>
 
+        <!-- Lista de plantas del jardín mostradas mediante un RecyclerView.
+             Cada elemento se representa con el diseño "target_planta". -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_jardin"
             android:layout_marginTop="20dp"

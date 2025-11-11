@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Contenedor principal que representa una tarjeta visual para mostrar datos de luz -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="380dp"
@@ -9,6 +10,7 @@
     android:padding="16dp"
     android:layout_marginBottom="16dp">
 
+    <!-- Título centrado que indica que los datos del gráfico corresponden al nivel de luz -->
     <TextView
         android:text="@string/luz"
         android:textAlignment="center"
@@ -20,8 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <!-- Gráfico de línea (LineChart) donde se mostrará la intensidad de luz a lo largo del tiempo -->
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chartHumedad"
+        android:id="@+id/chartLuz"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 

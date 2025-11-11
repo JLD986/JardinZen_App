@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    Interfaz de vinculación de red o dispositivo.
+    Este diseño permite al usuario ingresar los datos de su red WiFi
+    y seleccionar un dispositivo Bluetooth disponible.
+-->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="30dp"
     android:background="@color/beige_claro">
 
+    <!--
+        Contenedor principal vertical.
+        Centra los elementos de entrada y botones en la pantalla.
+    -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        >
+        android:gravity="center_horizontal">
 
+        <!--
+            Título principal de la pantalla.
+            Indica la acción de vincular una red o dispositivo.
+        -->
         <TextView
             android:text="@string/vincular"
             android:textSize="26sp"
@@ -21,11 +34,14 @@
             android:fontFamily="@font/comfortaa"
             android:textColor="@color/verde_fuente"
             android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
             android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-
+        <!--
+            Campo de texto para ingresar el nombre de la red WiFi (SSID).
+            Se usa un TextInputLayout con estilo Material Design.
+        -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -43,6 +59,10 @@
                 android:textColor="@color/negro" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--
+            Campo de texto para ingresar la contraseña del WiFi.
+            Incluye el ícono para mostrar/ocultar la contraseña.
+        -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -62,6 +82,10 @@
                 android:textColor="@color/negro" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--
+            Campo de texto para ingresar el correo del usuario.
+            Puede usarse para asociar la red o dispositivo con la cuenta del usuario.
+        -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -80,7 +104,10 @@
                 android:textColor="@color/negro" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
+        <!--
+            Botón para buscar dispositivos Bluetooth disponibles.
+            Activa la detección y muestra los resultados en la lista inferior.
+        -->
         <Button
             android:id="@+id/btnBuscar"
             android:text="@string/buscar_dispositivos_bluetooth"
@@ -93,15 +120,22 @@
             android:textSize="16sp"
             android:layout_marginTop="20dp" />
 
+        <!--
+            Lista que mostrará los dispositivos Bluetooth encontrados.
+            Cada elemento puede ser seleccionado por el usuario.
+        -->
         <ListView
             android:id="@+id/listViewDevices"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:dividerHeight="1dp"
-            android:divider="@color/verde_fuente"
-            />
+            android:divider="@color/verde_fuente" />
 
+        <!--
+            Botón para enviar los datos ingresados (SSID, contraseña, correo)
+            y el dispositivo seleccionado para su vinculación.
+        -->
         <Button
             android:id="@+id/btnEnviar"
             android:text="@string/enviando_datos"

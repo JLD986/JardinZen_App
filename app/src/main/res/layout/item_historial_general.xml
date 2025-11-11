@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Contenedor principal del historial general de mediciones -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="380dp"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="@drawable/card_border"
     android:padding="16dp"
     android:layout_marginBottom="24dp">
 
-    <!-- Título -->
+    <!-- Título que indica que la sección muestra el historial general de los datos registrados -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +21,7 @@
         android:fontFamily="@font/comfortaa"
         android:layout_marginBottom="8dp"/>
 
-    <!-- Encabezados -->
+    <!-- Fila que funciona como encabezado de la tabla, mostrando los nombres de cada columna -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         android:padding="8dp"
         android:background="@drawable/blanco_redondeado">
 
+        <!-- Encabezado de columna para la fecha del registro -->
         <TextView
             android:layout_weight="0.7"
             android:layout_width="0dp"
@@ -37,6 +39,7 @@
             android:textColor="@color/verde_oscuro"
             android:fontFamily="@font/comfortaa"/>
 
+        <!-- Encabezado de columna para el valor de temperatura -->
         <TextView
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -46,6 +49,7 @@
             android:textColor="@color/verde_oscuro"
             android:fontFamily="@font/comfortaa"/>
 
+        <!-- Encabezado de columna para el valor de humedad -->
         <TextView
             android:layout_weight="0.8"
             android:layout_width="0dp"
@@ -55,6 +59,7 @@
             android:textColor="@color/verde_oscuro"
             android:fontFamily="@font/comfortaa"/>
 
+        <!-- Encabezado de columna para el nivel de luz -->
         <TextView
             android:layout_weight=".5"
             android:layout_width="0dp"
@@ -63,10 +68,9 @@
             android:textStyle="bold"
             android:textColor="@color/verde_oscuro"
             android:fontFamily="@font/comfortaa"/>
-
     </LinearLayout>
 
-    <!-- RecyclerView para los registros -->
+    <!-- RecyclerView que mostrará la lista de registros del historial, con cada fila representando un conjunto de valores -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerHistorial"
         android:layout_width="match_parent"

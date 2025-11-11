@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Este diseño corresponde al fragmento que permite ajustar el nivel mínimo
+de humedad del suelo dentro de la app Jardín Zen.
+Su función es permitir al usuario visualizar, modificar y guardar el porcentaje
+de humedad que activará el riego automático si el suelo está seco.
+Se usa un ScrollView para que el contenido sea visible en pantallas pequeñas.
+-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +14,7 @@
     android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentAjusteHumedad">
 
+    <!-- Contenedor principal que agrupa todos los elementos del fragmento -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,6 +22,7 @@
         android:gravity="center_horizontal"
         android:padding="24dp">
 
+        <!-- Título principal que indica el propósito del fragmento -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,6 +34,7 @@
             android:gravity="center"
             android:layout_marginBottom="24dp"/>
 
+        <!-- Texto explicativo que indica al usuario qué representa este ajuste -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,6 +48,7 @@
             android:gravity="center"
             android:layout_marginBottom="32dp"/>
 
+        <!-- Subtítulo que introduce la parte práctica del ajuste -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,6 +60,8 @@
             android:fontFamily="@font/comfortaa"
             android:layout_marginBottom="10dp"/>
 
+        <!-- Sección que contiene el texto, el slider para ajustar el porcentaje
+             y el valor máximo de referencia (100%) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,6 +71,7 @@
             android:padding="16dp"
             android:layout_marginBottom="24dp">
 
+            <!-- Texto que acompaña al slider para indicar el valor de humedad -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,6 +81,8 @@
                 android:fontFamily="@font/comfortaa"
                 android:layout_marginEnd="8dp"/>
 
+            <!-- Control deslizante que permite seleccionar el nivel de humedad mínimo.
+                 Su valor puede ir del 0 al 100%, y el usuario puede moverlo en pasos de 1%. -->
             <com.google.android.material.slider.Slider
                 android:id="@+id/slider_humedad"
                 android:layout_width="0dp"
@@ -83,6 +99,7 @@
                 app:thumbStrokeColor="@color/verde_fuente"
                 app:thumbStrokeWidth="2dp"/>
 
+            <!-- Texto que muestra el valor máximo de referencia del slider -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,6 +111,7 @@
 
         </LinearLayout>
 
+        <!-- Texto dinámico que mostrará el estado actual del suelo (húmedo o seco) -->
         <TextView
             android:id="@+id/tv_estado_suelo"
             android:layout_width="wrap_content"
@@ -105,6 +123,8 @@
             android:fontFamily="@font/comfortaa"
             android:layout_marginBottom="25dp"/>
 
+        <!-- Texto que explica cómo se activará el riego automático
+             dependiendo del valor configurado en el slider -->
         <TextView
             android:id="@+id/tv_riego_automatico_info"
             android:layout_width="wrap_content"
@@ -116,6 +136,7 @@
             android:fontFamily="@font/comfortaa"
             android:layout_marginBottom="32dp"/>
 
+        <!-- Botón que guarda el valor seleccionado del nivel mínimo de humedad -->
         <Button
             android:id="@+id/btn_guardar_cambios"
             android:layout_width="wrap_content"

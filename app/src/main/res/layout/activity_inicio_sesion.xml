@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Archivo XML que define la interfaz gráfica para la pantalla de inicio de sesión
+    de la aplicación Jardín Zen. Utiliza un LinearLayout vertical como contenedor principal-->
+
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,13 +15,16 @@
     android:background="@color/verde_fondo"
     tools:context="com.example.jardnzen_app.InicioSesionActivity">
 
-    <!-- Logo -->
+    <!--Imagen del logo principal de la aplicación-->
     <ImageView
         android:src="@drawable/logo"
         android:layout_width="100dp"
         android:layout_height="100dp"/>
 
-    <!-- Ingresar -->
+    <!--
+        Título grande con el texto “Iniciar sesión”.
+        Utiliza una fuente personalizada y color definido en los strings.
+    -->
     <TextView
         android:text="@string/txt_iniciarSesion"
         android:fontFamily="@font/comfortaa"
@@ -28,7 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <!--nombre de usuario-->
+    <!--
+        Campo de texto para ingresar el correo o nombre de usuario.
+        Está dentro de un TextInputLayout para un diseño más moderno.
+    -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="30dp"
         android:layout_width="300dp"
@@ -42,7 +51,10 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--contraseña-->
+    <!--
+        Campo de texto para la contraseña.
+        Incluye un botón para mostrar/ocultar el texto (passwordToggleEnabled).
+    -->
     <com.google.android.material.textfield.TextInputLayout
         app:passwordToggleEnabled="true"
         android:layout_marginTop="10dp"
@@ -58,7 +70,8 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- boton ingresar -->
+    <!--Botón principal para ingresar a la aplicación.
+        Usa MaterialButton con bordes redondeados, color verde y texto en negrita-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_ingresar"
         android:text="@string/btn_ingresar"
@@ -74,7 +87,10 @@
         android:layout_width="200dp"
         android:layout_height="60dp"/>
 
-    <!-- enlace olvidar contraseña -->
+    <!--
+        Texto con enlace para recuperar la contraseña.
+        Aparece debajo del botón de ingresar.
+    -->
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/txt_olvidasteContrasena"
@@ -86,7 +102,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <!-- ingresar con -->
+    <!--
+        Texto que indica la opción de ingresar con otra cuenta (por ejemplo, Google).
+    -->
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/txt_ingresa_con"
@@ -98,7 +116,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <!-- boton google-->
+    <!--
+        Sección con el ícono de Google para iniciar sesión usando esa cuenta.
+        Se usa un LinearLayout horizontal para centrar el icono.
+    -->
     <LinearLayout
         android:id="@+id/boton_google"
         android:orientation="horizontal"
@@ -108,6 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <!-- Ícono de Google usado como botón visual -->
         <ImageView
             android:id="@+id/google"
             android:src="@drawable/google"
@@ -116,7 +138,9 @@
             android:layout_height="50dp"/>
     </LinearLayout>
 
-    <!-- no tienes cuenta -->
+    <!--
+        Texto que invita al usuario a registrarse si aún no tiene una cuenta.
+    -->
     <TextView
         android:layout_marginTop="15dp"
         android:id="@+id/txt_no_tienes_cuenta"
@@ -128,7 +152,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <!-- boton registrar -->
+    <!--
+        Botón para ir a la pantalla de registro.
+        Similar en estilo al botón de ingreso, pero más pequeño.
+    -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_Registrar"
         android:text="@string/btn_registrar"

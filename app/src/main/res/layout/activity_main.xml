@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    Diseño principal de la actividad (MainActivity)
+    Usa un RelativeLayout para organizar los elementos en posiciones relativas entre sí.
+-->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,12 +13,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--
+        Encabezado superior de la app.
+        Contiene el título del nombre de la app y el logo.
+    -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@color/cafe_claro">
 
+        <!--
+            Texto con el nombre de la aplicación.
+            Se aplica una fuente personalizada, color y tamaño de texto.
+        -->
         <TextView
             android:id="@+id/Titulo"
             android:text="@string/app_name"
@@ -25,20 +38,30 @@
             android:layout_width="300dp"
             android:layout_height="60dp"/>
 
+        <!--
+            Imagen del logo ubicada junto al título.
+            Usa una imagen del directorio drawable.
+        -->
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginLeft="300dp"
             android:src="@drawable/logo" />
 
+        <!--
+            Línea decorativa en la parte inferior del encabezado.
+        -->
         <View
             android:layout_alignParentBottom="true"
             android:background="@color/cafe_oscuro"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
-
     </RelativeLayout>
 
+    <!--
+        Contenedor principal donde se muestran los fragmentos.
+        Se ubica entre el encabezado y la barra de navegación inferior.
+    -->
     <FrameLayout
         android:id="@+id/fragmentoFL"
         android:layout_above="@id/bottomNV"
@@ -47,6 +70,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <!--
+        Línea separadora entre el contenido y la barra inferior.
+    -->
     <View
         android:id="@+id/view"
         android:layout_above="@+id/bottomNV"
@@ -54,7 +80,11 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
-    <!--barra de navegacion-->
+    <!--
+        Barra de navegación inferior (BottomNavigationView).
+        Contiene las opciones del menú definidas en "nav_menu".
+        Se muestra en la parte inferior de la pantalla.
+    -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNV"
         android:layout_width="match_parent"
@@ -64,6 +94,5 @@
         app:menu="@menu/nav_menu"
         app:itemIconSize="25dp"
         app:itemTextColor="@color/negro"/>
-
 
 </RelativeLayout>

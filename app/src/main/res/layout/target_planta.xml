@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Este layout define una tarjeta (CardView) que muestra la información principal de una planta.
+    Incluye su imagen, nombre y datos ambientales como temperatura, humedad, luz y nivel de agua.
+    Además, contiene un botón para ver más detalles de la planta.
+-->
+
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,12 +17,18 @@
     app:cardUseCompatPadding="true"
     android:background="@drawable/card_border">
 
+    <!--
+        FrameLayout sirve como contenedor general dentro de la tarjeta.
+        Aquí se coloca el fondo decorativo y los elementos visuales internos.
+    -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/card_border">
 
-        <!--tarjeta-->
+        <!--
+            LinearLayout principal en orientación horizontal.
+        -->
         <LinearLayout
             android:orientation="horizontal"
             android:padding="12dp"
@@ -24,14 +36,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!--imagen y nombre-->
+            <!-- Contiene la imagen y el nombre de la planta -->
             <LinearLayout
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
-                <!--imagen de la planta-->
+                <!-- Imagen representativa de la planta -->
                 <ImageView
                     android:id="@+id/imagen_planta"
                     android:layout_width="100dp"
@@ -40,7 +52,8 @@
                     android:contentDescription="@string/nombre_planta"
                     android:src="@drawable/hortensia" />
 
-                <!--nombre de la planta-->
+                <!-- Nombre de la planta -->
+                <!-- Muestra el nombre de la especie o tipo de planta en la tarjeta -->
                 <TextView
                     android:id="@+id/nombre_planta"
                     android:text="@string/nombre_planta"
@@ -52,7 +65,8 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <!--Datos de la planta-->
+
+            <!-- Contiene los datos ambientales de la planta y el botón "Ver más" -->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_marginStart="1dp"
@@ -61,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
+                <!-- Tabla para organizar los valores de temperatura, humedad, luz y agua -->
                 <TableLayout
                     android:shrinkColumns="*"
                     android:stretchColumns="*"
@@ -68,8 +83,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <!--Temperatura y Humedad-->
                     <TableRow>
-                        <!-- Temperatura -->
+
+                        <!-- Contenedor de los datos de temperatura -->
                         <LinearLayout
                             android:orientation="vertical"
                             android:gravity="center"
@@ -77,6 +94,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
+                            <!-- Título del dato: “Temperatura” -->
+                            <!-- Indica el tipo de información que se mostrará debajo -->
                             <TextView
                                 android:id="@+id/Temperatura"
                                 android:text="@string/temperatura"
@@ -87,6 +106,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
+                            <!-- Valor actual de la temperatura de la planta -->
                             <TextView
                                 android:id="@+id/dato_temperatura"
                                 tools:text="22 °C"
@@ -98,7 +118,7 @@
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
 
-                        <!-- Humedad -->
+                        <!-- Contenedor de los datos de humedad -->
                         <LinearLayout
                             android:orientation="vertical"
                             android:gravity="center"
@@ -106,6 +126,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
+                            <!-- Título del dato: “Humedad del suelo” -->
+                            <!-- Indica la cantidad de humedad presente en la tierra -->
                             <TextView
                                 android:id="@+id/Humedad"
                                 android:text="@string/humedad_suelo"
@@ -116,6 +138,7 @@
                                 android:layout_width="90dp"
                                 android:layout_height="wrap_content"/>
 
+                            <!-- Valor numérico de la humedad actual -->
                             <TextView
                                 android:id="@+id/dato_humedad"
                                 tools:text="45%"
@@ -128,8 +151,10 @@
                         </LinearLayout>
                     </TableRow>
 
+                    <!--Luz y Nivel de agua-->
                     <TableRow>
-                        <!-- Nivel de luz -->
+
+                        <!-- Contenedor de los datos de nivel de luz -->
                         <LinearLayout
                             android:orientation="vertical"
                             android:gravity="center"
@@ -137,6 +162,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
+                            <!-- Título del dato: “Nivel de luz” -->
+                            <!-- Representa la cantidad de iluminación que recibe la planta -->
                             <TextView
                                 android:id="@+id/Luz"
                                 android:text="@string/nivel_luz"
@@ -147,6 +174,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
+                            <!-- Valor actual del nivel de luz medido -->
                             <TextView
                                 android:id="@+id/dato_luz"
                                 tools:text="300 lux"
@@ -158,7 +186,7 @@
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
 
-                        <!-- Nivel de agua -->
+                        <!-- Contenedor de los datos de nivel de agua -->
                         <LinearLayout
                             android:orientation="vertical"
                             android:gravity="center"
@@ -166,6 +194,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
+                            <!-- Título del dato: “Nivel de agua” -->
+                            <!-- Indica la cantidad de agua disponible para la planta -->
                             <TextView
                                 android:id="@+id/agua"
                                 android:text="@string/nivel_agua"
@@ -176,6 +206,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
+                            <!-- Valor actual del nivel de agua -->
                             <TextView
                                 android:id="@+id/dato_agua"
                                 tools:text="2.5 L"
@@ -190,7 +221,7 @@
 
                 </TableLayout>
 
-                <!--boton de ver mas-->
+                <!-- Botón para ver más información detallada de la planta -->
                 <Button
                     android:id="@+id/ver_mas"
                     android:text="@string/ver_mas"
@@ -205,11 +236,7 @@
                     android:layout_height="48dp"
                     android:clickable="true"
                     android:focusable="true"/>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </FrameLayout>
-
 </androidx.cardview.widget.CardView>

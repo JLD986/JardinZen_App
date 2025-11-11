@@ -1,15 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Diseño del FragmentPerfil:
+Muestra la información del usuario, sus plantas registradas y opciones de configuración relacionadas con el sistema.
+Incluye tarjetas informativas, botones interactivos y un botón para cerrar sesión.
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentPerfil">
 
+    <!-- ScrollView permite desplazarse si el contenido es mayor al alto de la pantalla -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Contenedor principal que organiza el contenido en columnas -->
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -17,6 +25,7 @@
             android:padding="5dp"
             android:paddingBottom="20dp">
 
+            <!-- Muestra el encabezado del perfil del usuario -->
             <TextView
                 android:id="@+id/hola_usuario"
                 android:text="@string/mi_perfil"
@@ -29,6 +38,7 @@
                 android:layout_width="250dp"
                 android:layout_height="60dp"/>
 
+            <!-- Contiene la imagen del usuario, su nombre y correo -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -36,11 +46,13 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp">
 
+                <!-- Imagen de perfil del usuario -->
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_perfil"/>
 
+                <!-- Contenedor de nombre y correo -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -48,6 +60,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="15dp">
 
+                    <!-- Nombre del usuario -->
+                    <!-- Muestra el nombre registrado en la aplicación -->
                     <TextView
                         android:id="@+id/nombre_usuario"
                         android:layout_width="wrap_content"
@@ -57,6 +71,8 @@
                         android:textStyle="bold"
                         android:fontFamily="@font/comfortaa"/>
 
+                    <!-- Correo electrónico del usuario -->
+                    <!-- Muestra el correo vinculado a la cuenta -->
                     <TextView
                         android:id="@+id/correo_usuario"
                         android:layout_width="wrap_content"
@@ -65,15 +81,14 @@
                         android:textColor="@color/verde_fuente"
                         android:textSize="16sp"
                         android:fontFamily="@font/comfortaa"/>
-
                 </LinearLayout>
-
             </LinearLayout>
 
+            <!-- Título de la sección de datos del sistema -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Informacion del Sistema"
+                android:text="Información del Sistema"
                 android:fontFamily="@font/comfortaa"
                 android:textStyle="bold"
                 android:textColor="@color/verde_fuente"
@@ -81,7 +96,7 @@
                 android:layout_marginStart="20dp"
                 android:textSize="24sp"/>
 
-            <!-- Plantas Activas -->
+            <!--TARJETA: PLANTAS REGISTRADAS-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -92,11 +107,14 @@
                 android:orientation="horizontal"
                 android:padding="12dp">
 
+                <!-- Icono representando una planta -->
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_plant" />
 
+                <!-- Texto descriptivo de la tarjeta -->
+                <!-- Etiqueta que indica la cantidad de plantas activas -->
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -108,6 +126,7 @@
                     android:textColor="@color/verde_fuente"
                     android:textSize="18sp" />
 
+                <!-- Dato dinámico: número de plantas registradas -->
                 <TextView
                     android:id="@+id/txt_plantas_registradas"
                     android:layout_width="wrap_content"
@@ -117,10 +136,9 @@
                     android:textStyle="bold"
                     android:textColor="@color/verde_fuente"
                     android:textSize="18sp" />
-
             </LinearLayout>
 
-            <!-- Dispositivo Vinculado -->
+            <!--TARJETA: DISPOSITIVO VINCULADO-->
             <LinearLayout
                 android:id="@+id/card_dispositivo"
                 android:layout_width="match_parent"
@@ -135,11 +153,14 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
 
+                <!-- Icono del dispositivo IoT -->
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_dispositivo"/>
 
+                <!-- Título de la tarjeta -->
+                <!-- Indica la conexión del dispositivo inteligente al sistema -->
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -151,6 +172,8 @@
                     android:textColor="@color/verde_fuente"
                     android:textSize="18sp" />
 
+                <!-- Estado del dispositivo IoT -->
+                <!-- Muestra si el sistema detecta un dispositivo conectado -->
                 <TextView
                     android:id="@+id/txt_dispositivo_iot_vinculado"
                     android:layout_width="wrap_content"
@@ -160,10 +183,9 @@
                     android:textStyle="bold"
                     android:textColor="@color/verde_fuente"
                     android:textSize="18sp" />
-
             </LinearLayout>
 
-            <!-- Notificaciones -->
+            <!--TARJETA: NOTIFICACIONES-->
             <LinearLayout
                 android:id="@+id/card_notificaciones"
                 android:layout_width="match_parent"
@@ -178,11 +200,14 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
 
+                <!-- Icono de campana de notificaciones -->
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_notificaciones" />
 
+                <!-- Etiqueta descriptiva -->
+                <!-- Indica el estado actual de las notificaciones -->
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -194,19 +219,20 @@
                     android:textColor="@color/verde_fuente"
                     android:textSize="18sp" />
 
+                <!-- Estado de las notificaciones -->
+                <!-- Muestra si están activadas o desactivadas -->
                 <TextView
                     android:id="@+id/txt_notificaciones_estado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/comfortaa"
-                    android:text="Activadas "
+                    android:text="Activadas"
                     android:textStyle="bold"
                     android:textColor="@color/verde_fuente"
                     android:textSize="18sp" />
-
             </LinearLayout>
 
-            <!-- Modo Riego -->
+            <!--TARJETA: MODO DE RIEGO-->
             <LinearLayout
                 android:id="@+id/card_modo_riego"
                 android:layout_width="match_parent"
@@ -221,11 +247,14 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground">
 
+                <!-- Icono de gota representando el riego -->
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_gota_agua"/>
 
+                <!-- Texto descriptivo -->
+                <!-- Indica si el sistema está en modo automático o manual -->
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -237,6 +266,7 @@
                     android:textColor="@color/verde_fuente"
                     android:textSize="18sp" />
 
+                <!-- Valor dinámico del modo de riego actual -->
                 <TextView
                     android:id="@+id/txt_modo_riego"
                     android:layout_width="wrap_content"
@@ -246,9 +276,10 @@
                     android:textStyle="bold"
                     android:textColor="@color/verde_fuente"
                     android:textSize="18sp" />
-
             </LinearLayout>
 
+
+            <!-- Permite salir de la cuenta del usuario -->
             <Button
                 android:id="@+id/btn_cerrar_sesion"
                 android:layout_marginTop="40dp"
@@ -264,9 +295,6 @@
                 android:fontFamily="@font/comfortaa"
                 android:paddingHorizontal="10dp"
                 android:textSize="16sp"/>
-
         </LinearLayout>
-
     </ScrollView>
-
 </FrameLayout>

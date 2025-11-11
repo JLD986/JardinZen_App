@@ -1,21 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Contenedor principal del fragmento de Configuraciones.
+     Define el fondo, el contexto del fragmento y el espacio donde se mostrará el contenido. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/beige_claro"
     tools:context="com.example.jardnzen_app.Fragmentos.FragmentConfiguraciones">
 
+    <!-- ScrollView permite desplazarse verticalmente cuando el contenido excede el tamaño de la pantalla. -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- LinearLayout principal que organiza todos los elementos de forma vertical dentro del ScrollView. -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="5dp">
 
+            <!-- Título principal de la pantalla, muestra la palabra "Configuración" en un tamaño grande y centrado visualmente. -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,6 +34,7 @@
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
+            <!-- Sección con interruptor para activar o desactivar el riego manual. -->
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
@@ -37,6 +45,7 @@
                 android:orientation="horizontal"
                 android:padding="12dp">
 
+                <!-- Switch que permite habilitar o deshabilitar el riego manual desde la interfaz. -->
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_riego_manual"
                     android:thumb="@drawable/switch_thumb"
@@ -44,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
+                <!-- Texto descriptivo del interruptor, indica la función de activar el riego manual. -->
                 <TextView
                     android:id="@+id/tv_riego_manual"
                     android:layout_width="wrap_content"
@@ -57,6 +67,7 @@
 
             </LinearLayout>
 
+            <!-- Sección para acceder al ajuste del nivel mínimo de humedad del suelo. -->
             <LinearLayout
                 android:id="@+id/ajuste_humedad"
                 android:layout_width="350dp"
@@ -68,11 +79,13 @@
                 android:orientation="horizontal"
                 android:padding="12dp">
 
+                <!-- Ícono visual que representa el agua, relacionado con la humedad del suelo. -->
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_gota_agua" />
 
+                <!-- Texto que indica la acción de ajustar el nivel mínimo de humedad para el riego automático. -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,6 +98,7 @@
 
             </LinearLayout>
 
+            <!-- Sección para acceder a las configuraciones de alertas del sistema. -->
             <LinearLayout
                 android:id="@+id/config_alert"
                 android:layout_width="350dp"
@@ -96,11 +110,13 @@
                 android:orientation="horizontal"
                 android:padding="10dp">
 
+                <!-- Ícono que representa las notificaciones o alertas del sistema. -->
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_notificaciones" />
 
+                <!-- Texto que identifica esta opción como la configuración de alertas. -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

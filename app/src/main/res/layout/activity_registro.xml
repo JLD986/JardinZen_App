@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    Pantalla de Registro de Usuario.
+    Usa un LinearLayout vertical que centra todos los elementos
+    y define el fondo verde del diseño.
+-->
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,13 +18,19 @@
     android:background="@color/verde_fondo"
     tools:context="com.example.jardnzen_app.RegistroActivity">
 
-    <!--logo-->
+    <!--
+        Imagen del logo de la aplicación.
+        Sirve como elemento decorativo y de identidad visual.
+    -->
     <ImageView
         android:src="@drawable/logo"
         android:layout_width="100dp"
         android:layout_height="100dp"/>
 
-    <!--Registrar-->
+    <!--
+        Título principal "Registrar".
+        Usa una fuente personalizada y un tamaño grande para destacar.
+    -->
     <TextView
         android:text="@string/txt_registrar"
         android:fontFamily="@font/comfortaa"
@@ -28,7 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <!--Nombre de usuario-->
+    <!--
+        Etiqueta que indica el campo de "Nombre de usuario".
+    -->
     <TextView
         android:text="@string/et_Nombreusuario"
         android:layout_marginTop="30dp"
@@ -40,6 +54,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <!--
+        Campo de texto para escribir el nombre de usuario.
+        Se encuentra dentro de un TextInputLayout (de Material Design)
+        para mejorar el estilo del campo.
+    -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="310dp"
         android:layout_height="55dp">
@@ -52,7 +71,9 @@
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--correo-->
+    <!--
+        Etiqueta del campo de "Correo electrónico".
+    -->
     <TextView
         android:text="@string/tv_correoElectronico"
         android:layout_marginTop="10dp"
@@ -64,6 +85,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <!--
+        Campo de texto para ingresar el correo electrónico.
+    -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="310dp"
         android:layout_height="55dp">
@@ -76,7 +100,9 @@
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--contraseña-->
+    <!--
+        Etiqueta del campo de "Contraseña".
+    -->
     <TextView
         android:text="@string/et_contrasena"
         android:layout_marginTop="10dp"
@@ -88,6 +114,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <!--
+        Campo de texto para ingresar la contraseña.
+        Incluye la opción de mostrar/ocultar la contraseña (passwordToggleEnabled).
+    -->
     <com.google.android.material.textfield.TextInputLayout
         app:passwordToggleEnabled="true"
         android:layout_width="310dp"
@@ -101,7 +131,10 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--boton de registro-->
+    <!--
+        Botón para registrar al usuario.
+        Tiene bordes redondeados, color personalizado y borde decorativo.
+    -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_registrar"
         android:text="@string/btn_registrar"
@@ -117,7 +150,10 @@
         android:layout_width="200dp"
         android:layout_height="55dp"/>
 
-    <!--la o xd-->
+    <!--
+        Texto que muestra "o", separando el botón de registro
+        y el enlace de iniciar sesión.
+    -->
     <TextView
         android:id="@+id/txt_o"
         android:text="@string/txt_o"
@@ -129,7 +165,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <!--enlace para iniciar sesion-->
+    <!--
+        Enlace tipo texto para redirigir al usuario
+        hacia la pantalla de inicio de sesión.
+    -->
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/btn_iniciosesion"
