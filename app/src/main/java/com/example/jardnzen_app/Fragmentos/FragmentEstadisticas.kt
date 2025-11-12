@@ -119,7 +119,7 @@ class FragmentEstadisticas : Fragment() {
 
         chart.legend.isEnabled = false
 
-        // IMPORTANTE: Habilitar el dibujo de valores
+        // Habilitar el dibujo de valores
         chart.setDrawMarkers(true)
         chart.isHighlightPerDragEnabled = true
 
@@ -163,7 +163,7 @@ class FragmentEstadisticas : Fragment() {
         dataSet.valueTextSize = 10f
         dataSet.setDrawFilled(false) // No relleno
 
-        // IMPORTANTE: Asegurar que se dibujen las líneas
+        // Asegurar que se dibujen las líneas
         dataSet.setDrawCircles(true)
         dataSet.setDrawHorizontalHighlightIndicator(true)
         dataSet.setDrawVerticalHighlightIndicator(true)
