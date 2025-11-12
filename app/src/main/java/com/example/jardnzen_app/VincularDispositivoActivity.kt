@@ -38,7 +38,7 @@ class VincularDispositivoActivity : AppCompatActivity() {
 
     private var selectedDevice: BluetoothDevice? = null
     private var socket: BluetoothSocket? = null
-    private var userPassword: String? = null // ✅ contraseña almacenada en la sesión
+    private var userPassword: String? = null // contraseña almacenada en la sesión
 
     private val uuid: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
@@ -65,7 +65,7 @@ class VincularDispositivoActivity : AppCompatActivity() {
         initBluetooth()
         setupViews()
         pedirPermisos()
-        precargarCorreo()  // ✅ aquí cargamos correo y contraseña guardada
+        precargarCorreo()  // aquí cargamos correo y contraseña guardada
         setupListeners()
     }
 
@@ -94,7 +94,7 @@ class VincularDispositivoActivity : AppCompatActivity() {
         }
 
         if (password != null) {
-            userPassword = password // ✅ guardamos contraseña para enviar al ESP32
+            userPassword = password // guardamos contraseña para enviar al ESP32
         }
     }
 
@@ -247,7 +247,7 @@ class VincularDispositivoActivity : AppCompatActivity() {
                     Log.d("VincularDispositivo", "Dispositivo guardado en Firebase: $dispositivoNombre")
                     Toast.makeText(this, "Dispositivo vinculado exitosamente", Toast.LENGTH_SHORT).show()
 
-                    // Opcional: Crear estructura de sensores por defecto
+                    // Crear estructura de sensores por defecto
                     crearEstructuraSensores(uid.uid, dispositivoNombre)
 
                     // Cerrar actividad después de éxito
