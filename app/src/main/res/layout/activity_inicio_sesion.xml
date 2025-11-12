@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!--Archivo XML que define la interfaz gráfica para la pantalla de inicio de sesión
     de la aplicación Jardín Zen. Utiliza un LinearLayout vertical como contenedor principal-->
-
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

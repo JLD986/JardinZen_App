@@ -19,11 +19,6 @@
         android:icon="@drawable/ic_perfil"
         />
 
-    <item
-        android:id="@+id/item_Notificaciones"
-        android:title="Notificaciones"
-        android:icon="@drawable/ic_notificaciones"
-        />
 
     <item
         android:id="@+id/item_Configuracion"

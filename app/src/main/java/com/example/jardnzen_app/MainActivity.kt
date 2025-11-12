@@ -9,7 +9,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.jardnzen_app.Fragmentos.FragmentConfiguraciones
 import com.example.jardnzen_app.Fragmentos.FragmentEstadisticas
 import com.example.jardnzen_app.Fragmentos.FragmentInicio
-import com.example.jardnzen_app.Fragmentos.FragmentNotifiaciones
 import com.example.jardnzen_app.Fragmentos.FragmentPerfil
 import com.example.jardnzen_app.InicioSesionActivity
 
@@ -66,10 +65,6 @@ class MainActivity : AppCompatActivity() {
                     verFragmentPerfil()
                     true
                 }
-                R.id.item_Notificaciones -> {
-                    verFragmentNotificaciones()
-                    true
-                }
                 R.id.item_Configuracion -> {
                     verFragmentConfiguracion()
                     true
@@ -110,13 +105,6 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun verFragmentNotificaciones() {
-
-        val fragment = FragmentNotifiaciones()
-        supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentoFL.id, fragment, "Fragment Notificaciones")
-            .commit()
-    }
 
     private fun verFragmentConfiguracion() {
 
