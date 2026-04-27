@@ -101,12 +101,13 @@ class FragmentPerfil : Fragment() {
                 }
             })
     }
-    // --- Cuenta cuántas plantas activas tiene el usuario, pero en este caso solo podemos manejar 1 ---
+    // --- Cuenta cuántas plantas tiene el usuario en el nodo 'plantas' ---
     private fun contarPlantasActivas(uid: String) {
-        database.child(uid).child("dispositivos").child("JardinZenESP32").child("sensores")
-            .addListenerForSingleValueEvent(object : ValueEventListener {
+        database.child(uid).child("plantas")
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    plantasRegistradas.text = if (snapshot.exists()) "1 planta" else "0 plantas"
+                    val count = snapshot.childrenCount
+                    plantasRegistradas.text = if (count == 1L) "1 planta" else "$count plantas"
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -120,13 +121,10 @@ class FragmentPerfil : Fragment() {
             val intent = Intent(requireContext(), VincularDispositivoActivity::class.java)
             startActivity(intent)
         }
-        // Tarjeta para activar/desactivar notificaciones, no tiene una funcion real
 
         view.findViewById<View>(R.id.card_notificaciones).setOnClickListener {
             toggleNotificaciones()
         }
-
-        // Tarjeta para cambiar modo de riego, hay un boton en la seccion de configuracion, pero hemos trsladado la funcion aqui
 
         view.findViewById<View>(R.id.card_modo_riego).setOnClickListener {
             cambiarModoRiego()
@@ -134,7 +132,7 @@ class FragmentPerfil : Fragment() {
     }
 
 
-    // --- Alterna el estado de las notificaciones (ON/OFF), solo seria de agregar la funcionalidad ---
+    // --- Alterna el estado de las notificaciones (ON/OFF) ---
     private fun toggleNotificaciones() {
         val user = auth.currentUser ?: return
         val uid = user.uid
@@ -147,17 +145,21 @@ class FragmentPerfil : Fragment() {
 
                     database.child(uid).child("notificaciones").setValue(nuevoEstado)
                         .addOnSuccessListener {
-                            notificacionesEstado.text = if (nuevoEstado) "Activadas ✅" else "Desactivadas ❌"
-                            Toast.makeText(
-                                requireContext(),
-                                if (nuevoEstado) "Notificaciones activadas" else "Notificaciones desactivadas",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            if (isAdded && context != null) {
+                                notificacionesEstado.text = if (nuevoEstado) "Activadas ✅" else "Desactivadas ❌"
+                                Toast.makeText(
+                                    requireContext(),
+                                    if (nuevoEstado) "Notificaciones activadas" else "Notificaciones desactivadas",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(requireContext(), "Error al cambiar notificaciones", Toast.LENGTH_SHORT).show()
+                    if (isAdded && context != null) {
+                        Toast.makeText(requireContext(), "Error al cambiar notificaciones", Toast.LENGTH_SHORT).show()
+                    }
                 }
             })
     }

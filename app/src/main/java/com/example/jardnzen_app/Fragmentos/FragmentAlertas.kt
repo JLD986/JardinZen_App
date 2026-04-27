@@ -5,43 +5,67 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.locochones.jardnzen_app.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.locochones.jardnzen_app.databinding.FragmentAlertasBinding
 
 class FragmentAlertas : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentAlertasBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+    private val deviceId = "JardinZenESP32"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alertas, container, false)
+    ): View {
+        _binding = FragmentAlertasBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentAlertas().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid ?: return
+        database = FirebaseDatabase.getInstance().getReference("Usuarios").child(uid)
+            .child("dispositivos").child(deviceId).child("configuracion").child("alertas")
+
+        cargarConfiguracionAlertas()
+
+        // Listeners para los switches
+        binding.switchAlertaAgua.setOnCheckedChangeListener { _, isChecked -> 
+            database.child("agua_baja").setValue(isChecked) 
+        }
+        binding.switchAlertaHumedad.setOnCheckedChangeListener { _, isChecked -> 
+            database.child("humedad_baja").setValue(isChecked) 
+        }
+        binding.switchAlertaLuz.setOnCheckedChangeListener { _, isChecked -> 
+            database.child("exceso_luz").setValue(isChecked) 
+        }
+        binding.switchAlertaTemperatura.setOnCheckedChangeListener { _, isChecked -> 
+            database.child("temperatura_extrema").setValue(isChecked) 
+        }
+        binding.switchAlertaMantenimiento.setOnCheckedChangeListener { _, isChecked -> 
+            database.child("mantenimiento").setValue(isChecked) 
+        }
+    }
+
+    private fun cargarConfiguracionAlertas() {
+        database.get().addOnSuccessListener { snapshot ->
+            binding.switchAlertaAgua.isChecked = snapshot.child("agua_baja").getValue(Boolean::class.java) ?: true
+            binding.switchAlertaHumedad.isChecked = snapshot.child("humedad_baja").getValue(Boolean::class.java) ?: true
+            binding.switchAlertaLuz.isChecked = snapshot.child("exceso_luz").getValue(Boolean::class.java) ?: false
+            binding.switchAlertaTemperatura.isChecked = snapshot.child("temperatura_extrema").getValue(Boolean::class.java) ?: false
+            binding.switchAlertaMantenimiento.isChecked = snapshot.child("mantenimiento").getValue(Boolean::class.java) ?: true
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

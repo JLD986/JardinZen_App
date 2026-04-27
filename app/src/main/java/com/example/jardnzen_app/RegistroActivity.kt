@@ -118,6 +118,8 @@ class RegistroActivity : AppCompatActivity() {
         datosUsuario["fechaRegistro"] = fechaRegistro
         datosUsuario["proveedor"] = "Email"
         datosUsuario["online"] = true
+        datosUsuario["modoRiego"] = "Automático"
+        datosUsuario["notificaciones"] = true
 
         val reference = FirebaseDatabase.getInstance().getReference("Usuarios")
         reference.child(uid)

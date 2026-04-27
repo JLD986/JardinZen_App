@@ -12,69 +12,86 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.locochones.jardnzen_app.databinding.FragmentInicioBinding
 
+import android.app.AlertDialog
+import android.widget.EditText
+import android.widget.Toast
+
 class FragmentInicio : Fragment() {
 
-    // ViewBinding para acceder fácilmente a los elementos del layout XML
-    private lateinit var binding: FragmentInicioBinding
+    private var _binding: FragmentInicioBinding? = null
+    private val binding get() = _binding!!
 
-    // Para la autenticación del usuario
     private lateinit var auth: FirebaseAuth
-
-    // Referencia a la base de datos de usuarios
     private lateinit var databaseUsuarios: DatabaseReference
-    // Referencia a la base de datos de sensores
+    private lateinit var databasePlantas: DatabaseReference
     private lateinit var databaseSensores: DatabaseReference
 
-
-
-    // Adaptador del RecyclerView
     private lateinit var adapter: PlantaAdapter
-
-    // Lista que contendrá las plantas a mostrar
     private val listaPlantas = mutableListOf<Planta>()
-
-    // ID del dispositivo en Firebase (ESP32)
     private val deviceId = "JardinZenESP32"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentInicioBinding.inflate(inflater, container, false)
+        _binding = FragmentInicioBinding.inflate(inflater, container, false)
 
-        // Inicializa Firebase Authentication y la referencia a los usuarios
         auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid ?: return binding.root
         databaseUsuarios = FirebaseDatabase.getInstance().getReference("Usuarios")
+        databasePlantas = FirebaseDatabase.getInstance().getReference("Usuarios").child(uid).child("plantas")
 
-        // Configurar RecyclerView
         binding.recyclerJardin.layoutManager = LinearLayoutManager(requireContext())
         adapter = PlantaAdapter(listaPlantas)
         binding.recyclerJardin.adapter = adapter
 
-        // Aca se muestra el nombre del usuario y cargamos los datos de los sensores
-        val user = auth.currentUser
-        if (user != null) {
-            obtenerNombreUsuario(user.uid)
-            obtenerDatosSensores(user.uid)
-        } else {
-            binding.holaUsuario.text = "Hola ????"
-        }
+        obtenerNombreUsuario(uid)
+        cargarPlantas(uid)
+
+        binding.btnAgregarPlanta.setOnClickListener { mostrarDialogoAgregarPlanta(uid) }
+        binding.btnBorrarPlanta.setOnClickListener { mostrarDialogoBorrarPlanta() }
 
         return binding.root
     }
 
     private fun obtenerNombreUsuario(uid: String) {
-        databaseUsuarios.child(uid).get().addOnSuccessListener { snapshot ->
-            val nombre = snapshot.child("nombre").value?.toString()
+        databaseUsuarios.child(uid).child("nombre").get().addOnSuccessListener { snapshot ->
+            val nombre = snapshot.value?.toString()
             binding.holaUsuario.text = if (!nombre.isNullOrEmpty()) "Hola $nombre" else "Hola ????"
-        }.addOnFailureListener {
-            binding.holaUsuario.text = "Hola ????"
         }
     }
 
-    private fun obtenerDatosSensores(uid: String) {
+    private fun cargarPlantas(uid: String) {
+        databasePlantas.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                listaPlantas.clear()
+                for (plantaSnapshot in snapshot.children) {
+                    val planta = plantaSnapshot.getValue(Planta::class.java)
+                    planta?.let {
+                        it.id = plantaSnapshot.key ?: ""
+                        listaPlantas.add(it)
+                    }
+                }
+                
+                if (listaPlantas.isEmpty()) {
+                    // Si no hay plantas, podríamos cargar la de defecto o dejarlo vacío
+                    // El usuario pidió que aparezcan las disponibles en firebase
+                }
+                
+                // Si hay plantas, vamos a vincular los sensores a la primera planta por ahora 
+                // (o a la que coincida con el deviceId si tuviéramos esa lógica)
+                actualizarSensoresEnTiempoReal(uid)
+                
+                adapter.notifyDataSetChanged()
+            }
 
-        // Ruta completa hacia los sensores del usuario y su dispositivo
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(requireContext(), "Error al cargar plantas", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun actualizarSensoresEnTiempoReal(uid: String) {
         databaseSensores = FirebaseDatabase.getInstance()
             .getReference("Usuarios")
             .child(uid)
@@ -82,40 +99,71 @@ class FragmentInicio : Fragment() {
             .child(deviceId)
             .child("sensores")
 
-        // Escucha en tiempo real los cambios en los valores de los sensores
-
         databaseSensores.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                if (listaPlantas.isEmpty()) return
 
-                // Limpia la lista anterior de plantas, pero como solo tenemos 1
+                val temperatura = snapshot.child("temperatura").getValue(Double::class.java) ?: 0.0
+                val humedad = snapshot.child("humedad_suelo").getValue(Int::class.java) ?: 0
+                val luz = snapshot.child("luz").getValue(Int::class.java) ?: 0
+                val agua = snapshot.child("nivel_pct").getValue(Double::class.java) ?: 0.0
 
-                listaPlantas.clear()
-
-                // Obtiene los valores de cada sensor desde Firebase
-
-                val temperatura = snapshot.child("temperatura").getValue(Double::class.java)
-                val humedad = snapshot.child("humedad_suelo").getValue(Int::class.java)
-                val luz = snapshot.child("luz").getValue(Int::class.java)
-                val agua = snapshot.child("nivel_pct").getValue(Double::class.java)
-
-                // Crea una instancia del modelo Planta con los datos actuales
-
-                val planta = Planta(
-                    nombre = " Hortensia 🌱",
-                    temperatura = "${temperatura ?: 0.0} °C",
-                    humedad = "${humedad ?: 0} %",
-                    luz = "${luz ?: 0} %",
-                    agua = "${agua ?: 0.0} %",
-                    imagenUrl = ""
+                // Por simplicidad, actualizamos la primera planta con los sensores reales del ESP32
+                val primeraPlanta = listaPlantas[0]
+                val plantaActualizada = primeraPlanta.copy(
+                    temperatura = "$temperatura °C",
+                    humedad = "$humedad %",
+                    luz = "$luz %",
+                    agua = "$agua %"
                 )
+                listaPlantas[0] = plantaActualizada
+                adapter.notifyItemChanged(0)
+            }
 
-                listaPlantas.add(planta)
-                adapter.notifyDataSetChanged()
-            }
-            // Si ocurre un error al leer datos desde Firebase
-            override fun onCancelled(error: DatabaseError) {
-                println(" Error en Firebase: ${error.message}")
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    private fun mostrarDialogoAgregarPlanta(uid: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Agregar nueva planta")
+        
+        val input = EditText(requireContext())
+        input.hint = "Nombre de la planta"
+        builder.setView(input)
+
+        builder.setPositiveButton("Agregar") { _, _ ->
+            val nombre = input.text.toString()
+            if (nombre.isNotEmpty()) {
+                val nuevaPlanta = Planta(nombre = nombre)
+                databasePlantas.push().setValue(nuevaPlanta)
+            }
+        }
+        builder.setNegativeButton("Cancelar", null)
+        builder.show()
+    }
+
+    private fun mostrarDialogoBorrarPlanta() {
+        if (listaPlantas.isEmpty()) {
+            Toast.makeText(requireContext(), "No hay plantas para borrar", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val nombresPlantas = listaPlantas.map { it.nombre }.toTypedArray()
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Selecciona planta a borrar")
+        builder.setItems(nombresPlantas) { _, which ->
+            val plantaId = listaPlantas[which].id
+            databasePlantas.child(plantaId).removeValue().addOnSuccessListener {
+                Toast.makeText(requireContext(), "Planta eliminada", Toast.LENGTH_SHORT).show()
+            }
+        }
+        builder.setNegativeButton("Cancelar", null)
+        builder.show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

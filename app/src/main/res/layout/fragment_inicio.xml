@@ -34,17 +34,47 @@ Contiene un título principal, un subtítulo y una lista de plantas mostradas co
             android:layout_height="60dp"/>
 
         <!-- Subtítulo que identifica la sección "Mi Jardín" -->
-        <TextView
-            android:id="@+id/mi_jardin"
-            android:text="@string/mi_jardin"
-            android:fontFamily="@font/comfortaa"
-            android:textStyle="bold"
-            android:textSize="27sp"
-            android:textColor="@color/verde_fuente2"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="35dp"
-            android:layout_width="160dp"
-            android:layout_height="50dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp">
+
+            <TextView
+                android:id="@+id/mi_jardin"
+                android:text="@string/mi_jardin"
+                android:fontFamily="@font/comfortaa"
+                android:textStyle="bold"
+                android:textSize="27sp"
+                android:textColor="@color/verde_fuente2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/btn_agregar_planta"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/blanco_redondeado"
+                android:src="@android:drawable/ic_input_add"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="Agregar planta" />
+
+            <ImageButton
+                android:id="@+id/btn_borrar_planta"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/blanco_redondeado"
+                android:src="@android:drawable/ic_delete"
+                android:contentDescription="Borrar planta" />
+
+        </LinearLayout>
 
         <!-- Lista de plantas del jardín mostradas mediante un RecyclerView.
              Cada elemento se representa con el diseño "target_planta". -->

@@ -53,6 +53,8 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")
 
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
+
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 

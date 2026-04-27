@@ -123,4 +123,7 @@
     <string name="correo_usuario">Correo de usuario</string>
     <string name="buscar_dispositivos_bluetooth">Buscar dispositivos Bluetooth</string>
     <string name="enviando_datos">Enviar datos al ESP32 ...📨</string>
+
+    <!-- Google Login (Placeholder - Reemplazar con el real de Firebase si es necesario) -->
+    <string name="default_web_client_id">311371557701-7ha4ohhuliheerrqln924qo5qdgj58j6.apps.googleusercontent.com</string>
 </resources>

@@ -5,56 +5,83 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.locochones.jardnzen_app.R
+import com.locochones.jardnzen_app.databinding.FragmentAjusteHumedadBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentAjusteHumedad.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentAjusteHumedad : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentAjusteHumedadBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+    private val deviceId = "JardinZenESP32"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ajuste_humedad, container, false)
+    ): View {
+        _binding = FragmentAjusteHumedadBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentAjusteHumedad.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentAjusteHumedad().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid ?: return
+        database = FirebaseDatabase.getInstance().getReference("Usuarios").child(uid)
+            .child("dispositivos").child(deviceId).child("configuracion")
+
+        // Cargar valor actual desde Firebase
+        database.child("humedad_minima").get().addOnSuccessListener { snapshot ->
+            val value = snapshot.getValue(Int::class.java) ?: 45
+            binding.sliderHumedad.value = value.toFloat()
+            actualizarUI(value)
+        }
+
+        // Listener para el slider
+        binding.sliderHumedad.addOnChangeListener { _, value, fromUser ->
+            if (fromUser) {
+                actualizarUI(value.toInt())
+            }
+        }
+
+        // Guardar cambios
+        binding.btnGuardarCambios.setOnClickListener {
+            val value = binding.sliderHumedad.value.toInt()
+            database.child("humedad_minima").setValue(value).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(requireContext(), "Configuración guardada", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "Error al guardar", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun actualizarUI(humedadMin: Int) {
+        binding.tvRiegoAutomaticoInfo.text = getString(R.string.riego_activado_si_baja, humedadMin)
+        
+        // Simular estado del suelo basado en un valor de ejemplo o lectura actual
+        // Aquí podríamos traer la humedad actual para comparar
+        val uid = auth.currentUser?.uid ?: return
+        FirebaseDatabase.getInstance().getReference("Usuarios").child(uid)
+            .child("dispositivos").child(deviceId).child("sensores").child("humedad_suelo")
+            .get().addOnSuccessListener { snapshot ->
+                val humedadActual = snapshot.getValue(Int::class.java) ?: 0
+                if (humedadActual < humedadMin) {
+                    binding.tvEstadoSuelo.text = "Estado actual: SECO 🏜️"
+                } else {
+                    binding.tvEstadoSuelo.text = "Estado actual: HÚMEDO 💧"
+                }
+            }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

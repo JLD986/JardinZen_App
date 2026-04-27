@@ -268,30 +268,57 @@ class FragmentEstadisticas : Fragment() {
         historialAdapter.notifyDataSetChanged()
     }
 
-    // Carga el historial guardado en Firebase
+    // Carga el historial guardado en Firebase y actualiza tanto la lista como las gráficas
     private fun cargarHistorial(uid: String) {
         val historialRef = database.child(uid).child("historial")
 
         historialRef.limitToLast(10).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 historialList.clear()
+                humedadEntries.clear()
+                temperaturaEntries.clear()
+                luzEntries.clear()
+
+                val tempRegistros = mutableListOf<RegistroHistorial>()
 
                 for (historialSnapshot in snapshot.children) {
                     val registro = historialSnapshot.getValue(RegistroHistorial::class.java)
                     registro?.let {
                         it.id = historialSnapshot.key ?: ""
-                        historialList.add(it)
+                        tempRegistros.add(it)
                     }
                 }
 
-                historialList.sortByDescending { it.fecha }
+                // Ordenar por fecha para las gráficas (de más viejo a más nuevo)
+                tempRegistros.sortBy { it.fecha }
+                
+                tempRegistros.forEachIndexed { index, registro ->
+                    humedadEntries.add(Entry(index.toFloat(), registro.humedad.toFloat()))
+                    temperaturaEntries.add(Entry(index.toFloat(), registro.temperatura.toFloat()))
+                    luzEntries.add(Entry(index.toFloat(), registro.luz.toFloat()))
+                }
+
+                // Actualizar gráficas con datos históricos
+                actualizarChartUI(binding.chartHumedad, humedadEntries, "Humedad", Color.parseColor("#2E7D32"))
+                actualizarChartUI(binding.chartTemperatura, temperaturaEntries, "Temperatura", Color.parseColor("#D32F2F"))
+                actualizarChartUI(binding.chartLuz, luzEntries, "Luz", Color.parseColor("#FFA000"))
+
+                // Para la lista queremos el más reciente arriba
+                historialList.addAll(tempRegistros.reversed())
                 historialAdapter.notifyDataSetChanged()
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                // Manejar error
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    private fun actualizarChartUI(chart: com.github.mikephil.charting.charts.LineChart, 
+                                 entries: ArrayList<Entry>, label: String, color: Int) {
+        if (entries.isEmpty()) return
+        val dataSet = LineDataSet(entries, label)
+        configurarDataSet(dataSet, color)
+        chart.data = LineData(dataSet)
+        chart.invalidate()
     }
 
     // Formateador para el eje X
