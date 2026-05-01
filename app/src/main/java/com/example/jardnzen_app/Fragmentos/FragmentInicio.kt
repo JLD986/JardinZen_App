@@ -13,8 +13,15 @@ import com.google.firebase.database.*
 import com.locochones.jardnzen_app.databinding.FragmentInicioBinding
 
 import android.app.AlertDialog
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.example.jardnzen_app.Adaptadores.AlmanaqueAdapter
+import com.example.jardnzen_app.Modelos.PlantaAlmanaque
+import com.locochones.jardnzen_app.R
 
 class FragmentInicio : Fragment() {
 
@@ -25,10 +32,14 @@ class FragmentInicio : Fragment() {
     private lateinit var databaseUsuarios: DatabaseReference
     private lateinit var databasePlantas: DatabaseReference
     private lateinit var databaseSensores: DatabaseReference
+    private lateinit var databaseAlmanaque: DatabaseReference
 
     private lateinit var adapter: PlantaAdapter
     private val listaPlantas = mutableListOf<Planta>()
+    private val listaAlmanaque = mutableListOf<PlantaAlmanaque>()
     private val deviceId = "JardinZenESP32"
+
+    private var currentAlmanaqueAdapter: AlmanaqueAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +49,11 @@ class FragmentInicio : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         val uid = auth.currentUser?.uid ?: return binding.root
-        databaseUsuarios = FirebaseDatabase.getInstance().getReference("Usuarios")
-        databasePlantas = FirebaseDatabase.getInstance().getReference("Usuarios").child(uid).child("plantas")
+        
+        val firebaseDB = FirebaseDatabase.getInstance()
+        databaseUsuarios = firebaseDB.getReference("Usuarios")
+        databasePlantas = firebaseDB.getReference("Usuarios").child(uid).child("plantas")
+        databaseAlmanaque = firebaseDB.getReference("Almanaque")
 
         binding.recyclerJardin.layoutManager = LinearLayoutManager(requireContext())
         adapter = PlantaAdapter(listaPlantas)
@@ -47,8 +61,9 @@ class FragmentInicio : Fragment() {
 
         obtenerNombreUsuario(uid)
         cargarPlantas(uid)
+        cargarAlmanaque()
 
-        binding.btnAgregarPlanta.setOnClickListener { mostrarDialogoAgregarPlanta(uid) }
+        binding.btnAgregarPlanta.setOnClickListener { mostrarDialogoSeleccionarPlanta(uid) }
         binding.btnBorrarPlanta.setOnClickListener { mostrarDialogoBorrarPlanta() }
 
         return binding.root
@@ -73,20 +88,55 @@ class FragmentInicio : Fragment() {
                     }
                 }
                 
-                if (listaPlantas.isEmpty()) {
-                    // Si no hay plantas, podríamos cargar la de defecto o dejarlo vacío
-                    // El usuario pidió que aparezcan las disponibles en firebase
-                }
-                
-                // Si hay plantas, vamos a vincular los sensores a la primera planta por ahora 
-                // (o a la que coincida con el deviceId si tuviéramos esa lógica)
                 actualizarSensoresEnTiempoReal(uid)
-                
                 adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(requireContext(), "Error al cargar plantas", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun cargarAlmanaque() {
+        android.util.Log.d("FirebaseDebug", "Iniciando escucha de Almanaque...")
+        databaseAlmanaque.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                listaAlmanaque.clear()
+                if (!snapshot.exists()) {
+                    android.util.Log.e("FirebaseDebug", "¡OJO! El nodo 'Almanaque' NO EXISTE o está vacío en Firebase.")
+                } else {
+                    android.util.Log.d("FirebaseDebug", "Datos crudos de Almanaque: ${snapshot.value}")
+                }
+                for (plantaSnap in snapshot.children) {
+                    android.util.Log.d("FirebaseDebug", "--- Analizando nodo: ${plantaSnap.key} ---")
+                    android.util.Log.d("FirebaseDebug", "Contenido crudo: ${plantaSnap.value}")
+                    
+                    // Verificación manual de campos
+                    val nComun = plantaSnap.child("nombre_comun").value
+                    val desc = plantaSnap.child("descripcion").value
+                    android.util.Log.d("FirebaseDebug", "Campo 'nombre_comun' detectado: $nComun")
+                    android.util.Log.d("FirebaseDebug", "Campo 'descripcion' detectado: $desc")
+
+                    try {
+                        val planta = plantaSnap.getValue(PlantaAlmanaque::class.java)
+                        if (planta != null) {
+                            listaAlmanaque.add(planta.copy(id = plantaSnap.key ?: "")) 
+                            android.util.Log.d("FirebaseDebug", "¡ÉXITO! Planta parseada: ${planta.nombre_comun}")
+                        } else {
+                            android.util.Log.e("FirebaseDebug", "FALLO: El objeto PlantaAlmanaque resultó nulo para ${plantaSnap.key}")
+                        }
+                    } catch (e: Exception) {
+                        android.util.Log.e("FirebaseDebug", "ERROR de mapeo en ${plantaSnap.key}: ${e.message}")
+                    }
+                }
+                
+                // Actualizar el adaptador si el diálogo está abierto
+                currentAlmanaqueAdapter?.actualizarLista(listaAlmanaque)
+                android.util.Log.d("FirebaseDebug", "Finalizado: ${listaAlmanaque.size} plantas listas.")
+            }
+            override fun onCancelled(error: DatabaseError) {
+                android.util.Log.e("FirebaseDebug", "Error de conexión/permisos: ${error.message}")
             }
         })
     }
@@ -108,7 +158,6 @@ class FragmentInicio : Fragment() {
                 val luz = snapshot.child("luz").getValue(Int::class.java) ?: 0
                 val agua = snapshot.child("nivel_pct").getValue(Double::class.java) ?: 0.0
 
-                // Por simplicidad, actualizamos la primera planta con los sensores reales del ESP32
                 val primeraPlanta = listaPlantas[0]
                 val plantaActualizada = primeraPlanta.copy(
                     temperatura = "$temperatura °C",
@@ -124,23 +173,69 @@ class FragmentInicio : Fragment() {
         })
     }
 
-    private fun mostrarDialogoAgregarPlanta(uid: String) {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Agregar nueva planta")
-        
-        val input = EditText(requireContext())
-        input.hint = "Nombre de la planta"
-        builder.setView(input)
+    private fun mostrarDialogoSeleccionarPlanta(uid: String) {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_seleccionar_planta, null)
+        val etBuscar = dialogView.findViewById<EditText>(R.id.et_buscar_planta)
+        val rvAlmanaque = dialogView.findViewById<RecyclerView>(R.id.rv_almanaque)
+        val layoutSugerir = dialogView.findViewById<LinearLayout>(R.id.layout_sugerir)
+        val btnSugerir = dialogView.findViewById<View>(R.id.btn_sugerir_planta)
 
-        builder.setPositiveButton("Agregar") { _, _ ->
-            val nombre = input.text.toString()
-            if (nombre.isNotEmpty()) {
-                val nuevaPlanta = Planta(nombre = nombre)
-                databasePlantas.push().setValue(nuevaPlanta)
-            }
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        currentAlmanaqueAdapter = AlmanaqueAdapter(listaAlmanaque) { plantaSeleccionada ->
+            agregarPlantaAUsuario(uid, plantaSeleccionada)
+            dialog.dismiss()
         }
-        builder.setNegativeButton("Cancelar", null)
-        builder.show()
+
+        rvAlmanaque.layoutManager = LinearLayoutManager(requireContext())
+        rvAlmanaque.adapter = currentAlmanaqueAdapter
+
+        etBuscar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val texto = s.toString()
+                currentAlmanaqueAdapter?.filtrar(texto) { tieneResultados ->
+                    layoutSugerir.visibility = if (tieneResultados || texto.isEmpty()) View.GONE else View.VISIBLE
+                }
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        btnSugerir.setOnClickListener {
+            val plantaSugerida = etBuscar.text.toString()
+            FirebaseDatabase.getInstance().getReference("peticiones_plantas").push().setValue(
+                mapOf(
+                    "nombre_sugerido" to plantaSugerida,
+                    "usuario_id" to uid,
+                    "fecha_peticion" to System.currentTimeMillis(),
+                    "estado" to "pendiente"
+                )
+            )
+            Toast.makeText(requireContext(), "¡Gracias! Petición enviada al nodo peticiones_plantas.", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        }
+
+        dialog.setOnDismissListener {
+            currentAlmanaqueAdapter = null
+        }
+
+        dialog.show()
+    }
+
+    private fun agregarPlantaAUsuario(uid: String, plantaAlmanaque: PlantaAlmanaque) {
+        val nuevaPlanta = Planta(
+            nombre = plantaAlmanaque.nombre_comun,
+            imagenUrl = plantaAlmanaque.imagen_ref,
+            temperatura = "--",
+            humedad = "--",
+            luz = "--",
+            agua = "--"
+        )
+        databasePlantas.push().setValue(nuevaPlanta).addOnSuccessListener {
+            Toast.makeText(requireContext(), "${plantaAlmanaque.nombre_comun} agregada a tu jardín", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun mostrarDialogoBorrarPlanta() {

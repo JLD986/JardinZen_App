@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical"
+    android:background="?attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/iv_planta_almanaque"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/planta"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:id="@+id/tv_nombre_almanaque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre Planta"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/verde_oscuro"
+            android:fontFamily="@font/comfortaa"/>
+
+        <TextView
+            android:id="@+id/tv_descripcion_almanaque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción corta..."
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:fontFamily="@font/comfortaa"/>
+    </LinearLayout>
+</LinearLayout>

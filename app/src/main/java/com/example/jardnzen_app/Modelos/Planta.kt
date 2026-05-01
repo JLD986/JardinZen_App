@@ -4,10 +4,10 @@ import java.io.Serializable
 
 data class Planta(
    var id: String = "",
-   val nombre: String = "",
-   val temperatura: String = "",
-   val humedad: String = "",
-   val luz: String = "",
-   val agua: String = "",
-   val imagenUrl: String = ""
+   var nombre: String = "",
+   var temperatura: String = "",
+   var humedad: String = "",
+   var luz: String = "",
+   var agua: String = "",
+   var imagenUrl: String = ""
 ) : Serializable
